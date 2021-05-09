@@ -21,6 +21,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+
 import org.testng.annotations.BeforeSuite;
 import pages.LoginPage;
 
@@ -118,7 +119,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         return cal1;
     }
 
-    @BeforeSuite(alwaysRun = true)
+    //@BeforeSuite(alwaysRun = true)
     public void setUp() throws Exception {
         openBrowser();
         maximizeWindow();
