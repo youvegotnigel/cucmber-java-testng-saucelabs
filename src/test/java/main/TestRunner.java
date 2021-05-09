@@ -1,9 +1,12 @@
 package main;
 
-import com.google.common.io.Files;
-import helpers.ReportHelper;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
+//import cucumber.api.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+//import cucumber.api.CucumberOptions;
+
+import helpers.ReportHelper;
+import com.google.common.io.Files;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -19,6 +22,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import pages.LoginPage;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,6 +51,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     public static WebDriver driver = null;
     public static Properties config = null;
+    protected LoginPage loginPage;
 
     public void LoadConfigProperty() throws IOException {
         config = new Properties();
@@ -103,6 +108,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         LoadConfigProperty();
         String baseUrl = config.getProperty("siteUrl");
         driver.get(baseUrl);
+        loginPage = new LoginPage(driver);
     }
 
     public static String currentDateTime() {

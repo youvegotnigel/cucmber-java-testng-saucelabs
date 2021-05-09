@@ -1,26 +1,28 @@
 package stepDefinitions;
 
-import cucumber.api.java.en.*;
+import io.cucumber.java.en.*;
+//import cucumber.api.java.en.*;
 import main.TestRunner;
 import org.testng.Assert;
-import pages.LoginPage;
 
 public class LoginPageTest extends TestRunner {
 
-    LoginPage loginPage = new LoginPage(driver);
+    //LoginPage loginPage = new LoginPage(driver);
 
     @Given("^The Application has been launched$")
-    public void application_is_launched() {
+    public void application_is_launched() throws Exception{
+        openBrowser();
+        setEnv();
         Assert.assertEquals(loginPage.getPageTitle(), "Swag Labs");
         Assert.assertTrue(loginPage.logoIsDisplayed());
     }
 
-    @And("^I enter '(.+)' Username in text box$")
+    @And("I enter \'(.+)\' Username in text box")
     public void enter_username(String username) {
        loginPage.setUsername(username);
     }
 
-    @And("^I enter '(.+)' Password in text box$")
+    @And("I enter '(.+)' Password in text box")
     public void enter_password(String password) {
         loginPage.setPassword(password);
     }
@@ -34,5 +36,4 @@ public class LoginPageTest extends TestRunner {
     public void display_error_message(String errorMsg) {
         Assert.assertEquals(loginPage.getErrorMsg(), errorMsg);
     }
-
 }

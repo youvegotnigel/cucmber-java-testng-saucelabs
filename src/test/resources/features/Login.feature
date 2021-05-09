@@ -9,8 +9,8 @@ Feature: Login Test
 
     Examples:
       | username | password | errorMsg                                                                  |
-      |          |          | Epic sadface: Username is required                                        |
-      |          | test@123 | Epic sadface: Username is required                                        |
-      | test     |          | Epic sadface: Password is required                                        |
+      #|          |          | Epic sadface: Username is required                                        |
+      #|          | test@123 | Epic sadface: Username is required                                        |
+      #| test     |          | Epic sadface: Password is required                                        |
       | test     | test@123 | Epic sadface: Username and password do not match any user in this service |
 
