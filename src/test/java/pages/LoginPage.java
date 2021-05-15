@@ -19,10 +19,12 @@ public class LoginPage {
 
     //Methods
     public void setUsername(String username) {
+        driver.findElement(usernameTextBox).clear();
         driver.findElement(usernameTextBox).sendKeys(username);
     }
 
     public void setPassword(String password) {
+        driver.findElement(passwordTextBox).clear();
         driver.findElement(passwordTextBox).sendKeys(password);
     }
 
@@ -31,6 +33,7 @@ public class LoginPage {
     }
 
     public boolean logoIsDisplayed() {
+        driver.navigate().refresh();
         return driver.findElement(logo).isDisplayed();
     }
 
@@ -42,4 +45,8 @@ public class LoginPage {
         return driver.getTitle();
     }
 
+    //pass the driver for the next page
+    public InventoryPage goToInventoryPage() {
+        return new InventoryPage(driver);
+    }
 }
