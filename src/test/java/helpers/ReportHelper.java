@@ -12,9 +12,9 @@ public class ReportHelper {
     public static void generateCucumberReport() {
         File reportOutputDirectory = new File("target");
         ArrayList<String> jsonFiles = new ArrayList<String>();
-        jsonFiles.add("target/cucumber-reports/cucumber.json");
+        jsonFiles.add("target/cucumber-reports/CucumberTestReport.json");
 
-        String projectName = "cucumber-java-testng";
+        String projectName = "cucumber-java-testng-saucelabs";
 
         Configuration configuration = new Configuration(reportOutputDirectory, projectName);
         configuration.addClassifications("Platform", System.getProperty("os.name"));
