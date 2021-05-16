@@ -27,6 +27,7 @@ import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+
 public class BaseClass{
 
     public static WebDriver driver;
@@ -98,7 +99,7 @@ public class BaseClass{
     }
 
 
-    public String takeScreenshot(WebDriver driver, String screenshotName) throws IOException {
+    public static String takeScreenshot(String screenshotName) throws IOException {
 
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
