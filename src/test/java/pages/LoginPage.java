@@ -18,28 +18,34 @@ public class LoginPage {
     }
 
     //Methods
-    public void setUsername(String username){
+    public void setUsername(String username) {
+        driver.findElement(usernameTextBox).clear();
         driver.findElement(usernameTextBox).sendKeys(username);
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
+        driver.findElement(passwordTextBox).clear();
         driver.findElement(passwordTextBox).sendKeys(password);
     }
 
-    public void clickLoginButton(){
+    public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }
 
-    public boolean logoIsDisplayed(){
+    public boolean logoIsDisplayed() {
         return driver.findElement(logo).isDisplayed();
     }
 
-    public String getErrorMsg(){
+    public String getErrorMsg() {
         return driver.findElement(errorMsg).getText();
     }
 
-    public String getPageTitle(){
+    public String getPageTitle() {
         return driver.getTitle();
     }
 
+    //pass the driver for the next page
+    public InventoryPage goToInventoryPage() {
+        return new InventoryPage(driver);
+    }
 }

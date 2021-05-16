@@ -1,10 +1,8 @@
-package main;
+package base;
 
 import com.google.common.io.Files;
-import helpers.ReportHelper;
-import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.cucumber.testng.CucumberOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,9 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import pages.LoginPage;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,27 +22,18 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-@CucumberOptions(
 
-        monochrome = true,
-        plugin = {
-                "pretty",
-                "html:target/cucumber-reports/cucumber.html",
-                "json:target/cucumber-reports/cucumber.json"
-        },
-        features = "src/test/resources/features",
-        glue = "stepDefinitions"
-)
+public class BaseClass{
 
-
-public class TestRunner extends AbstractTestNGCucumberTests {
-
-    public static WebDriver driver = null;
-    public static Properties config = null;
+    public static WebDriver driver;
+    public static Properties config;
+    protected LoginPage loginPage;
+    private static final String fileSeparator = File.separator;
 
     public void LoadConfigProperty() throws IOException {
         config = new Properties();
@@ -80,6 +67,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     public void maximizeWindow() {
         driver.manage().window().maximize();
+        loginPage = new LoginPage(this.driver);
     }
 
     public void implicitWait(int time) {
@@ -105,34 +93,26 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         driver.get(baseUrl);
     }
 
-    public static String currentDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        String cal1 = dateFormat.format(cal.getTime());
-        return cal1;
+    public static String getTimestamp() {
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
+        return currentDate;
     }
 
-    @BeforeSuite(alwaysRun = true)
-    public void setUp() throws Exception {
-        openBrowser();
-        maximizeWindow();
-        implicitWait(30);
-        deleteAllCookies();
-        setEnv();
-    }
 
-    @AfterMethod(alwaysRun = true)
-    public void takeScreenshot() throws IOException {
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File targetFile = new File(System.getProperty("user.dir") + "//screenshots/screenshot.png");
-        targetFile.getParentFile().mkdir();
-        targetFile.createNewFile();
-        Files.copy(scrFile, targetFile);
+    public static String takeScreenshot(String screenshotName) throws IOException {
+
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+
+        String destination = System.getProperty("user.dir") + fileSeparator + "test-output" + fileSeparator + "html-report" + fileSeparator + "screenshots" +fileSeparator+ screenshotName + " - " + getTimestamp() + ".png";
+        File finalDestination = new File(destination);
+        FileUtils.copyFile(source, finalDestination);
+        return destination;
 
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown(ITestResult result) throws IOException {
+
+    public void takeScreenshot2(ITestResult result) throws IOException {
         if (result.isSuccess()) {
             File imageFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             String failureImageFileName = result.getMethod().getMethodName()
@@ -145,11 +125,11 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     }
 
-    @AfterSuite
-    public void quit(){
-        ReportHelper.generateCucumberReport();
+    public void tearDown(){
         driver.quit();
     }
 
-
+    public WebDriver getDriver(){
+        return driver;
+    }
 }

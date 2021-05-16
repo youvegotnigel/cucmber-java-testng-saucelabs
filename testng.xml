@@ -3,7 +3,7 @@
 <suite name="Testng Cucumber Suite" parallel="tests">
     <test name="Cucumber Test">
         <classes>
-            <class name="main.TestRunner"></class>
+            <class name="TestRunner"></class>
         </classes>
     </test>
 </suite>
