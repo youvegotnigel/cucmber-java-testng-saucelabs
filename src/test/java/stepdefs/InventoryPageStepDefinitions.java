@@ -5,7 +5,7 @@ import cucumber.api.java.en.And;
 import org.testng.Assert;
 import pages.LoginPage;
 
-public class InventoryPageTests extends BaseClass {
+public class InventoryPageStepDefinitions extends BaseClass {
 
     //InventoryPage inventoryPage = new InventoryPage(driver);
     LoginPage loginPage = new LoginPage(driver);

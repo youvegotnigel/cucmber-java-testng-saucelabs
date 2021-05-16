@@ -5,7 +5,7 @@ import org.testng.Assert;
 import cucumber.api.java.en.*;
 import pages.LoginPage;
 
-public class LoginTests extends BaseClass {
+public class LoginPageStepDefinitions extends BaseClass {
     LoginPage loginPage = new LoginPage(driver);
 
     @Given("The Application has been launched")
