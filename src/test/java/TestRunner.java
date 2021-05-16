@@ -10,7 +10,7 @@ import org.testng.annotations.*;
         features = "src/test/resources/features",
         glue = {"stepdefs"},
         tags = {"~@Ignore"},
-        format = {
+        plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json",
@@ -43,7 +43,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 
     @AfterClass(alwaysRun = true)
-    public void tearDownClass() throws Exception{
+    public void tearDownClass(){
         testNGCucumberRunner.finish();
         ReportHelper.generateCucumberReport();
         baseClass.tearDown();
