@@ -1,6 +1,10 @@
 package stepdefs;
 
 import base.BaseClass;
+import cucumber.api.Scenario;
+import cucumber.api.java.AfterStep;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import cucumber.api.java.en.*;
 import pages.LoginPage;
@@ -38,5 +42,12 @@ public class LoginPageStepDefinitions extends BaseClass {
     public void display_error_message(String errorMsg) {
         //throw new PendingException();
         Assert.assertEquals(loginPage.getErrorMsg(), errorMsg);
+    }
+
+    @AfterStep
+    public void takeScreenshotAfterEachStep(Scenario scenario){
+        TakesScreenshot screenshot = (TakesScreenshot)BaseClass.driver;
+        byte[] data = screenshot.getScreenshotAs(OutputType.BYTES);
+        scenario.embed(data,"image/png");
     }
 }
