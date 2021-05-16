@@ -1,7 +1,11 @@
 ## How to run
+
+type
 ```bash
-type "mvn test" in terminal
+"mvn clean install"
 ```
+in terminal
+
 ## My First Cucumber Project
 
 
@@ -12,7 +16,6 @@ Features:
 * POM
 * Cucumber
 * Cucumber Reports
-
 
 ## Author
 * **Nigel Mulholland** - [Linkedin](https://www.linkedin.com/in/nigel-mulholland/) 
