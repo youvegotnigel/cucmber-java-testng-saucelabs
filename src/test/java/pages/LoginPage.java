@@ -33,7 +33,6 @@ public class LoginPage {
     }
 
     public boolean logoIsDisplayed() {
-        driver.navigate().refresh();
         return driver.findElement(logo).isDisplayed();
     }
 
