@@ -2,6 +2,7 @@ package base;
 
 import com.google.common.io.Files;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +32,7 @@ public class BaseClass{
     public static WebDriver driver;
     public static Properties config;
     protected LoginPage loginPage;
+    private static final String fileSeparator = File.separator;
 
     public void LoadConfigProperty() throws IOException {
         config = new Properties();
@@ -89,20 +92,21 @@ public class BaseClass{
         driver.get(baseUrl);
     }
 
-    public static String currentDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        String cal1 = dateFormat.format(cal.getTime());
-        return cal1;
+    public static String getTimestamp() {
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
+        return currentDate;
     }
 
 
-    public void takeScreenshot() throws IOException {
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        File targetFile = new File(System.getProperty("user.dir") + "//screenshots/screenshot.png");
-        targetFile.getParentFile().mkdir();
-        targetFile.createNewFile();
-        Files.copy(scrFile, targetFile);
+    public String takeScreenshot(WebDriver driver, String screenshotName) throws IOException {
+
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+
+        String destination = System.getProperty("user.dir") + fileSeparator + "test-output" + fileSeparator + "html-report" + fileSeparator + "screenshots" +fileSeparator+ screenshotName + " - " + getTimestamp() + ".png";
+        File finalDestination = new File(destination);
+        FileUtils.copyFile(source, finalDestination);
+        return destination;
 
     }
 
@@ -120,7 +124,7 @@ public class BaseClass{
 
     }
 
-    public void tearDown() throws Exception {
+    public void tearDown(){
         driver.quit();
     }
 
