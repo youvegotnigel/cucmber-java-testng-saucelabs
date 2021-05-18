@@ -1,10 +1,10 @@
 package stepdefs;
 
 import base.BaseClass;
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.AfterStep;
-import cucumber.api.java.Before;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
@@ -28,7 +28,7 @@ public class ServiceHooks {
         try {
             TakesScreenshot screenshot = (TakesScreenshot) baseClass.driver;
             byte[] data = screenshot.getScreenshotAs(OutputType.BYTES);
-            scenario.embed(data, "image/png");
+            scenario.attach(data, "image/png", "Attachment");
         }catch (WebDriverException e) {
             e.printStackTrace();
         }
@@ -36,25 +36,6 @@ public class ServiceHooks {
 
     @After
     public void endTest(Scenario scenario) {
-        if (scenario.isFailed()) {
-
-            try {
-
-                final byte[] screenshot = ((TakesScreenshot) baseClass.driver).getScreenshotAs(OutputType.BYTES);
-                scenario.embed(screenshot, "image/png"); // ... and embed it in
-            } catch (WebDriverException e) {
-                e.printStackTrace();
-            }
-
-        } else {
-            try {
-
-                scenario.embed(((TakesScreenshot) baseClass.driver).getScreenshotAs(OutputType.BYTES), "image/png");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
         baseClass.driver.quit();
     }
 }
