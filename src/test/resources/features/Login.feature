@@ -5,8 +5,8 @@ Feature: Login Test
 
   @regression
   Scenario Outline: User should not be able to login with invalid credential
-    When I enter '<username>' Username in text box
-    And I enter '<password>' Password in text box
+    When I enter '<username>' in Username text box
+    And I enter '<password>' in Password text box
     And I click on login button
     Then System should display '<errorMsg>' Error Message
 
@@ -19,12 +19,11 @@ Feature: Login Test
 
   @regression
   Scenario Outline: User should be able to login with valid credential
-    When I enter '<username>' Username in text box
-    And I enter '<password>' Password in text box
+    When I enter '<username>' in Username text box
+    And I enter '<password>' in Password text box
     And I click on login button
     Then System should display page header 'PRODUCTS'
 
     Examples:
       | username      | password     |
       | standard_user | secret_sauce |
-
