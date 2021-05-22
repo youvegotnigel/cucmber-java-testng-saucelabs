@@ -1,8 +1,11 @@
 package base;
 
 import com.google.common.io.Files;
+import helpers.ExcelUtility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -32,6 +35,7 @@ public class BaseClass{
     public static Properties config;
     protected LoginPage loginPage;
     private static final String fileSeparator = File.separator;
+    public static final Logger log = LogManager.getLogger(BaseClass.class.getName());
 
     public void LoadConfigProperty() throws IOException {
         config = new Properties();
@@ -48,11 +52,13 @@ public class BaseClass{
 
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
+            log.debug("Initializing firefox driver");
 
         }else if(config.getProperty("browserType").equals("edge")){
 
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
+            log.debug("Initialize edge driver");
 
         }else if (config.getProperty("browserType").equals("chrome")) {
 
@@ -60,12 +66,14 @@ public class BaseClass{
             ChromeOptions options = new ChromeOptions();
             options.setHeadless(false);
             driver = new ChromeDriver(options);
+            log.debug("Initialize chrome driver");
         }
     }
 
     public void maximizeWindow() {
         driver.manage().window().maximize();
         loginPage = new LoginPage(this.driver);
+        log.debug("Maximizing browser window");
     }
 
     public void implicitWait(int time) {
@@ -83,12 +91,14 @@ public class BaseClass{
 
     public void deleteAllCookies() {
         driver.manage().deleteAllCookies();
+        log.debug("Deleting all cookies");
     }
 
     public void setEnv() throws Exception {
         LoadConfigProperty();
         String baseUrl = config.getProperty("siteUrl");
         driver.get(baseUrl);
+        log.debug("Loading url : " + baseUrl);
     }
 
     public static String getTimestamp() {
@@ -125,6 +135,7 @@ public class BaseClass{
 
     public void tearDown(){
         driver.quit();
+        log.debug("Closing driver");
     }
 
     public WebDriver getDriver(){
