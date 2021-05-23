@@ -8,7 +8,7 @@ import pages.LoginPage;
 public class InventoryPageStepDefinitions extends BaseClass {
 
     //InventoryPage inventoryPage = new InventoryPage(driver);
-    LoginPage loginPage = new LoginPage(driver);
+    LoginPage loginPage = new LoginPage(eventFiringWebDriver);
 
     @And("System should display page header {string}")
     public void verify_inventory_page_landing(String text) {

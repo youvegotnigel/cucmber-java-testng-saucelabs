@@ -23,9 +23,9 @@ public class ServiceHooks {
         baseClass.setEnv();
     }
 
-    @BeforeStep
-    public void startScenario(Scenario scenario){
-        log.debug("✰ Starting scenario : " + scenario.getName());
+    @Before
+    public void beforeStartScenario(Scenario scenario){
+        log.debug("✰ Started scenario : " + scenario.getName());
     }
 
     @AfterStep
@@ -34,13 +34,25 @@ public class ServiceHooks {
             TakesScreenshot screenshot = (TakesScreenshot) baseClass.driver;
             byte[] data = screenshot.getScreenshotAs(OutputType.BYTES);
             scenario.attach(data, "image/png", "Attachment");
+            //log.debug("Screenshot taken");
         }catch (WebDriverException e) {
             e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
     @After
     public void endTest(Scenario scenario) {
-        baseClass.driver.quit();
+
+        if(!scenario.isFailed()){
+            log.debug("✔ Passed scenario : " + scenario.getName());
+        }
+        if(scenario.isFailed()){
+            log.error("✘ Failed scenario : " + scenario.getName());
+        }
+
+//        baseClass.eventFiringWebDriver.quit();
+//        log.debug("Browser is closed");
+        baseClass.tearDown();
     }
 }

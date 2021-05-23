@@ -9,7 +9,7 @@ import java.io.IOException;
 
 
 public class LoginPageStepDefinitions extends BaseClass {
-    LoginPage loginPage = new LoginPage(driver);
+    LoginPage loginPage = new LoginPage(eventFiringWebDriver);
 
     @Given("The Application has been launched")
     public void application_is_launched() throws Exception {
