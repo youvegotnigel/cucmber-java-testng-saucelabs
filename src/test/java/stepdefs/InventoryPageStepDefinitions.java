@@ -67,11 +67,15 @@ public class InventoryPageStepDefinitions extends BaseClass {
                 for (WebElement a : actualListWebElements) {
                     actualListText.add(a.getText());
                 }
-
                 tempListText.addAll(actualListText);
-                Collections.sort(tempListText);
+                List<Double> tempListDouble = new ArrayList();
+                List<Double> actualListDouble = new ArrayList();
 
-                Assert.assertTrue(actualListText.equals(tempListText));
+                actualListDouble = covertListIntoDouble(tempListText);
+                tempListDouble = covertListIntoDouble(tempListText);
+
+                Collections.sort(tempListText);
+                Assert.assertTrue(actualListDouble.equals(tempListDouble));
                 break;
 
             default:
@@ -109,12 +113,14 @@ public class InventoryPageStepDefinitions extends BaseClass {
                 }
 
                 tempListText.addAll(actualListText);
-                Collections.sort(tempListText, Collections.reverseOrder());
+                List<Double> tempListDouble = new ArrayList();
+                List<Double> actualListDouble = new ArrayList();
 
-                printList(actualListText, "actual");
-                printList(tempListText, "temp");
+                actualListDouble = covertListIntoDouble(tempListText);
+                tempListDouble = covertListIntoDouble(tempListText);
 
-                Assert.assertTrue(actualListText.equals(tempListText));
+                Collections.sort(tempListDouble, Collections.reverseOrder());
+                Assert.assertTrue(actualListDouble.equals(tempListDouble));
                 break;
 
             default:
@@ -129,6 +135,21 @@ public class InventoryPageStepDefinitions extends BaseClass {
         for(String a : list){
             System.out.println("list : " + a);
         }
+    }
+
+    public List<Double> covertListIntoDouble(List <String> list){
+        List<String> sList = new ArrayList();
+        List<Double> dList = new ArrayList();
+
+        for(String a : list){
+            sList.add(a.replace("$",""));
+        }
+
+        for(String a : sList){
+            dList.add(Double.parseDouble(a));
+        }
+
+        return dList;
     }
 
 }
