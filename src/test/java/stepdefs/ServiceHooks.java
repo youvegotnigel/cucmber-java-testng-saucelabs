@@ -1,10 +1,9 @@
 package stepdefs;
 
 import base.BaseClass;
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
@@ -12,6 +11,7 @@ import org.openqa.selenium.WebDriverException;
 public class ServiceHooks {
 
     BaseClass baseClass;
+    public static final Logger log = LogManager.getLogger(ServiceHooks.class.getName());
 
     @Before
     public void initializeTest() throws Exception{
@@ -23,19 +23,36 @@ public class ServiceHooks {
         baseClass.setEnv();
     }
 
+    @Before
+    public void beforeStartScenario(Scenario scenario){
+        log.debug("✰ Started scenario : " + scenario.getName());
+    }
+
     @AfterStep
     public void takeScreenshotAfterEachStep(Scenario scenario){
         try {
             TakesScreenshot screenshot = (TakesScreenshot) baseClass.driver;
             byte[] data = screenshot.getScreenshotAs(OutputType.BYTES);
             scenario.attach(data, "image/png", "Attachment");
+            //log.debug("Screenshot taken");
         }catch (WebDriverException e) {
             e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
     @After
     public void endTest(Scenario scenario) {
-        baseClass.driver.quit();
+
+        if(!scenario.isFailed()){
+            log.debug("✔ Passed scenario : " + scenario.getName());
+        }
+        if(scenario.isFailed()){
+            log.error("✘ Failed scenario : " + scenario.getName());
+        }
+
+//        baseClass.eventFiringWebDriver.quit();
+//        log.debug("Browser is closed");
+        baseClass.tearDown();
     }
 }
