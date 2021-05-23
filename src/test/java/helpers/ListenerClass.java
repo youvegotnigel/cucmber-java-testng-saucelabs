@@ -211,11 +211,11 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void beforeGetText(WebElement element, WebDriver driver) {
-        log.debug("Before get text");
+        log.debug("Trying to find element with text: " + element.getText());
     }
 
     @Override
     public void afterGetText(WebElement element, WebDriver driver, String text) {
-        log.debug("After get text");
+        log.debug("Found element with text : " + element.getText());
     }
 }
