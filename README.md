@@ -14,6 +14,8 @@ Features:
 * Java
 * TestNG
 * POM
+* Log4J
+* Capture Screenshots
 * Cucumber
 * Cucumber Reports
 
