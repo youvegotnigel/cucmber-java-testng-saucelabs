@@ -50,9 +50,22 @@ public class ServiceHooks {
         if(scenario.isFailed()){
             log.error("✘ Failed scenario : " + scenario.getName());
         }
-
-//        baseClass.eventFiringWebDriver.quit();
-//        log.debug("Browser is closed");
         baseClass.tearDown();
     }
+
+//    @BeforeStep
+//    public void beforeStep() {
+//        //System.out.println("  @BeforeStep");
+//    }
+//
+//    @AfterStep
+//    public void afterStep() {
+//        System.out.println("  @AfterStep");
+//        try {
+//            log.debug("*********  2  **************");
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//    }
 }
