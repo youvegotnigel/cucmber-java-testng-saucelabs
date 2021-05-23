@@ -107,7 +107,7 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void afterNavigateTo(String url, WebDriver driver) {
-        System.out.println("Navigated to : " + driver.getCurrentUrl());
+        log.debug("Navigated to : " + driver.getCurrentUrl());
     }
 
     @Override
@@ -142,12 +142,12 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-        log.debug("Finding Element : " + by.toString());
+        log.debug("Trying to find ELEMENT : " + by.toString());
     }
 
     @Override
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
-        log.debug("Found Element : " + by.toString());
+        log.debug("Found ELEMENT : " + by.toString());
     }
 
     @Override
