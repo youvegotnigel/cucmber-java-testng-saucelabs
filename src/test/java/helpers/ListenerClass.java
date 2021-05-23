@@ -59,8 +59,8 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
 
         if (result.getStatus() == ITestResult.FAILURE) {
 
-            log.warn("The test case " + result.getTestName() + " has been failed");
-            log.error("The error is : " + result.getThrowable());
+            log.warn("💥 Exception Found !!!");
+            log.error("Caused by : " + result.getThrowable());
         }
 
     }
@@ -142,25 +142,25 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void beforeFindBy(By by, WebElement element, WebDriver driver) {
-        log.debug("Trying to find ELEMENT : " + by.toString());
+        log.debug("Trying to find element : " + by.toString());
     }
 
     @Override
     public void afterFindBy(By by, WebElement element, WebDriver driver) {
-        log.debug("Found ELEMENT : " + by.toString());
+        log.debug("Found element : " + by.toString());
     }
 
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
         String path = element.toString().split("->")[1];
-        log.debug("Before click on ELEMENT :" + path);
+        log.debug("Trying to find element to click on :" + path);
     }
 
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
 
         String path = element.toString().split("->")[1];
-        log.debug("After click on ELEMENT :" + path);
+        log.debug("Found element to click on :" + path);
     }
 
     @Override
@@ -195,7 +195,8 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void onException(Throwable throwable, WebDriver driver) {
-
+        log.warn("💥 Exception Found !!!");
+        log.error("Caused by : " + throwable.getMessage());
     }
 
     @Override
@@ -210,11 +211,11 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void beforeGetText(WebElement element, WebDriver driver) {
-
+        log.debug("Before get text");
     }
 
     @Override
     public void afterGetText(WebElement element, WebDriver driver, String text) {
-
+        log.debug("After get text");
     }
 }
