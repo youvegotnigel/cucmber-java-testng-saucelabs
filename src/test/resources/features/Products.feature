@@ -31,3 +31,14 @@ Feature: Products Functionality
     And Select 'Price (high to low)' from the dropdown
     Then Item 'prices' should be in descending order
 
+  @regression
+  Scenario: Verify Add/Remove items from cart
+    When I add 'Sauce Labs Fleece Jacket' to my cart
+    And I add "Sauce Labs Backpack" to my cart
+    And I add "Sauce Labs Bolt T-Shirt" to my cart
+    And I add "Test.allTheThings() T-Shirt (Red)" to my cart
+    And I add "Sauce Labs Bike Light" to my cart
+    And I remove "Test.allTheThings() T-Shirt (Red)" from my cart
+    And I remove "Sauce Labs Fleece Jacket" from my cart
+    Then There should be "3" items in the cart
+
