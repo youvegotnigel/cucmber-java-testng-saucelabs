@@ -2,6 +2,7 @@ package stepdefs;
 
 import base.BaseClass;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -129,6 +130,21 @@ public class InventoryPageStepDefinitions extends BaseClass {
         }
 
     }
+
+    @And("^I (?:add|remove) (.+) (?:to|from) my cart$")
+    public void add_to_or_remove_from_cart(String item){
+        loginPage.goToInventoryPage().clickOnAddCartOrRemove(item);
+    }
+
+
+    //@Then("There should be \"([^\"]+)\" items in the cart")
+    //Then("^There should be {string} items in the cart$")
+    @Then("^There should be \"(.+)\" items in the cart$")
+    public void theCountShouldBeItems(String count) {
+
+        Assert.assertEquals(loginPage.goToInventoryPage().getCartItemCount(), count);
+    }
+
 
     public void printList(List <String> list, String name){
         System.out.println("List name : " + name);
