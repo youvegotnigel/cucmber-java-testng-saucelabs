@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+<title>Cucumber Reports (no 1) - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+                <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+                <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+    
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+              <th>Number</th>
+            <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>MyProjectName</td>
+              <td>1</td>
+            <td>24 May 2021, 16:32</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+      </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+          <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+      </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Duration</th>
+            <th>Average</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+                      <tr>
+              <td class="location">stepdefs.InventoryPageStepDefinitions.check_ascending_order(java.lang.String)</td>
+              <td>2</td>
+              <td class="duration" data-value="337468000">337ms</td>
+              <td class="duration" data-value="168734000">168ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.InventoryPageStepDefinitions.check_descending_order(java.lang.String)</td>
+              <td>2</td>
+              <td class="duration" data-value="351883000">351ms</td>
+              <td class="duration" data-value="175941500">175ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.InventoryPageStepDefinitions.click_on_filter_icon()</td>
+              <td>4</td>
+              <td class="duration" data-value="296664000">296ms</td>
+              <td class="duration" data-value="74166000">074ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.InventoryPageStepDefinitions.select_items(java.lang.String)</td>
+              <td>4</td>
+              <td class="duration" data-value="326367000">326ms</td>
+              <td class="duration" data-value="81591750">081ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.InventoryPageStepDefinitions.shopping_cart_badge_is_displayed()</td>
+              <td>1</td>
+              <td class="duration" data-value="75841000">075ms</td>
+              <td class="duration" data-value="75841000">075ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.InventoryPageStepDefinitions.verify_inventory_page_landing(java.lang.String)</td>
+              <td>3</td>
+              <td class="duration" data-value="152250000">152ms</td>
+              <td class="duration" data-value="50750000">050ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.LoginPageStepDefinitions.application_is_launched()</td>
+              <td>8</td>
+              <td class="duration" data-value="763793000">763ms</td>
+              <td class="duration" data-value="95474125">095ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.LoginPageStepDefinitions.click_login_button()</td>
+              <td>8</td>
+              <td class="duration" data-value="5838749000">5s 838ms</td>
+              <td class="duration" data-value="729843625">729ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.LoginPageStepDefinitions.display_error_message(java.lang.String)</td>
+              <td>5</td>
+              <td class="duration" data-value="247073000">247ms</td>
+              <td class="duration" data-value="49414600">049ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.LoginPageStepDefinitions.enter_password(java.lang.String)</td>
+              <td>8</td>
+              <td class="duration" data-value="939370000">939ms</td>
+              <td class="duration" data-value="117421250">117ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.LoginPageStepDefinitions.enter_username(java.lang.String)</td>
+              <td>8</td>
+              <td class="duration" data-value="1240436000">1s 240ms</td>
+              <td class="duration" data-value="155054500">155ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.LoginPageStepDefinitions.login_as_valid_user()</td>
+              <td>5</td>
+              <td class="duration" data-value="2450855000">2s 450ms</td>
+              <td class="duration" data-value="490171000">490ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.ServiceHooks.beforeStartScenario(io.cucumber.java.Scenario)</td>
+              <td>13</td>
+              <td class="duration" data-value="16363000">016ms</td>
+              <td class="duration" data-value="1258692">001ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.ServiceHooks.endTest(io.cucumber.java.Scenario)</td>
+              <td>13</td>
+              <td class="duration" data-value="951778000">951ms</td>
+              <td class="duration" data-value="73213692">073ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                      <tr>
+              <td class="location">stepdefs.ServiceHooks.initializeTest()</td>
+              <td>13</td>
+              <td class="duration" data-value="13741503000">13s 741ms</td>
+              <td class="duration" data-value="1057038692">1s 057ms</td>
+              <td class="passed">100.00%</td>
+            </tr>
+                  </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>15</td>
+            <td>97</td>
+            <td class="duration">27s 730ms</td>
+            <td class="duration">285ms</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>
