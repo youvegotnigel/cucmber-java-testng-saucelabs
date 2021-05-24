@@ -16,10 +16,12 @@ public class InventoryPage {
     private By shopping_cart_badge = By.xpath("//div[@id='shopping_cart_container']");
     private By cart_item_count = By.xpath("//span[@class='shopping_cart_badge']");
 
+    //Constructor
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
     }
 
+    //Methods
     public List getItemNames(){
         return driver.findElements(item_names);
     }
@@ -40,12 +42,18 @@ public class InventoryPage {
         return driver.findElement(shopping_cart_badge).isDisplayed();
     }
 
-    public int getCartItemCount(){
-        return Integer.parseInt(driver.findElement(cart_item_count).getText());
+    public String getCartItemCount(){
+        return driver.findElement(cart_item_count).getText();
     }
 
     public String getPageHeader(){
         return driver.findElement(pageHeader).getText();
+    }
+
+    public void clickOnAddCartOrRemove(String item_name){
+
+        String  xpath = "//div[@class='inventory_item_name' and text()="+ item_name + "]/../../following-sibling::div/button";
+        driver.findElement(By.xpath(xpath)).click();
     }
 
 
