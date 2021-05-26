@@ -30,10 +30,17 @@ public class InventoryPageStepDefinitions extends BaseClass {
     }
 
     @And("^I should see (.+) inventory item images?$")
-    public void all_inventory_item_images_are_displayed(String count) {
+    public void all_inventory_item_images_are_displayed(int count) {
         //throw new PendingException();
         Assert.assertEquals(loginPage.goToInventoryPage().getItemImagesCount(), count);
     }
+
+    @And("^I should see (.+) inventory descriptions?$")
+    public void all_inventory_item_descriptions_are_displayed(int count) {
+        //throw new PendingException();
+        Assert.assertEquals(loginPage.goToInventoryPage().getItemDescriptionCount(), count);
+    }
+
 
     @And("I click on filter icon")
     public void click_on_filter_icon() {
