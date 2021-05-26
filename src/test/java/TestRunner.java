@@ -1,6 +1,8 @@
 
 import helpers.ReportHelper;
 import io.cucumber.testng.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -9,7 +11,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"stepdefs"},
-        tags = "@regression",
+        tags = "@regression and not @low",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
@@ -19,6 +21,7 @@ import org.testng.annotations.Test;
 public class TestRunner{
 
     private TestNGCucumberRunner testNGCucumberRunner;
+    public static final Logger log = LogManager.getLogger(TestRunner.class.getName());
 
     @BeforeClass(alwaysRun = true)
     public void setUpClass() {
@@ -42,7 +45,12 @@ public class TestRunner{
     public void tearDownClass() {
 
         testNGCucumberRunner.finish();
-        ReportHelper.generateCucumberReport();
+        try {
+            ReportHelper.generateCucumberReport();
+        }catch (Exception e){
+            log.warn("No feature files found");
+            log.error(e.getMessage());
+        }
     }
 
 }
