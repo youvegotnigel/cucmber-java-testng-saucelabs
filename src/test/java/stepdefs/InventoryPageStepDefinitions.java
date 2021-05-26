@@ -23,10 +23,16 @@ public class InventoryPageStepDefinitions extends BaseClass {
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), text);
     }
 
-    @And("Shopping cart badge should be displayed")
+    @And("^Shopping cart badge should be displayed$")
     public void shopping_cart_badge_is_displayed() {
         //throw new PendingException();
         Assert.assertTrue(loginPage.goToInventoryPage().shoppingCartIsDisplayed());
+    }
+
+    @And("^I should see (.+) inventory item images?$")
+    public void all_inventory_item_images_are_displayed(String count) {
+        //throw new PendingException();
+        Assert.assertEquals(loginPage.goToInventoryPage().getItemImagesCount(), count);
     }
 
     @And("I click on filter icon")
