@@ -7,6 +7,9 @@ Feature: Products Functionality
   Scenario: Verify shopping cart badge is displayed
     Then  Shopping cart badge should be displayed
 
+  Scenario: Verify all inventory item images are displayed
+    Then  I should see 6 inventory item images
+
   Scenario: Verify inventory item names are in ascending order
     When I click on filter icon
     And Select 'Name (A to Z)' from the dropdown
