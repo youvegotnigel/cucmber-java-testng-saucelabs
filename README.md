@@ -4,7 +4,7 @@
 
 type
 ```bash
-"mvn clean install"
+"mvn clean verify -Dtestng.dtd.http=true"
 ```
 in terminal
 
@@ -16,7 +16,7 @@ Features:
 * Java
 * TestNG
 * POM
-* Log4J
+* [Log4J](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)
 * Capture Screenshots
 * Cucumber
 * Cucumber Reports

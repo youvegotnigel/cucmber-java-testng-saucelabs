@@ -23,10 +23,28 @@ public class InventoryPageStepDefinitions extends BaseClass {
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), text);
     }
 
-    @And("Shopping cart badge should be displayed")
+    @And("^Shopping cart badge should be displayed$")
     public void shopping_cart_badge_is_displayed() {
         //throw new PendingException();
         Assert.assertTrue(loginPage.goToInventoryPage().shoppingCartIsDisplayed());
+    }
+
+    @And("^I click on Shopping cart badge$")
+    public void click_on_cart_badge() {
+        //throw new PendingException();
+       loginPage.goToInventoryPage().clickOnShoppingCart();
+    }
+
+    @And("^I should see (.+) inventory item images?$")
+    public void all_inventory_item_images_are_displayed(int count) {
+        //throw new PendingException();
+        Assert.assertEquals(loginPage.goToInventoryPage().getItemImagesCount(), count);
+    }
+
+    @And("^I should see (.+) inventory descriptions?$")
+    public void all_inventory_item_descriptions_are_displayed(int count) {
+        //throw new PendingException();
+        Assert.assertEquals(loginPage.goToInventoryPage().getItemDescriptionCount(), count);
     }
 
     @And("I click on filter icon")
@@ -50,7 +68,7 @@ public class InventoryPageStepDefinitions extends BaseClass {
         switch (type) {
 
             case "names":
-                actualListWebElements = loginPage.goToInventoryPage().getItemNames();
+                actualListWebElements = loginPage.goToInventoryPage().getAllItemNames();
 
                 for (WebElement a : actualListWebElements) {
                     actualListText.add(a.getText());
@@ -63,7 +81,7 @@ public class InventoryPageStepDefinitions extends BaseClass {
                 break;
 
             case "prices":
-                actualListWebElements = loginPage.goToInventoryPage().getItemPrices();
+                actualListWebElements = loginPage.goToInventoryPage().getAllItemPrices();
 
                 for (WebElement a : actualListWebElements) {
                     actualListText.add(a.getText());
@@ -94,7 +112,7 @@ public class InventoryPageStepDefinitions extends BaseClass {
         switch (type) {
             case "names":
 
-                actualListWebElements = loginPage.goToInventoryPage().getItemNames();
+                actualListWebElements = loginPage.goToInventoryPage().getAllItemNames();
                 for (WebElement a : actualListWebElements) {
                     actualListText.add(a.getText());
                 }
@@ -107,7 +125,7 @@ public class InventoryPageStepDefinitions extends BaseClass {
 
             case "prices":
 
-                actualListWebElements = loginPage.goToInventoryPage().getItemPrices();
+                actualListWebElements = loginPage.goToInventoryPage().getAllItemPrices();
 
                 for (WebElement a : actualListWebElements) {
                     actualListText.add(a.getText());
@@ -140,10 +158,20 @@ public class InventoryPageStepDefinitions extends BaseClass {
     //@Then("There should be \"([^\"]+)\" items in the cart")
     //Then("^There should be {string} items in the cart$")
     @Then("^There should be \"(.+)\" items in the cart$")
-    public void theCountShouldBeItems(String count) {
+    public void verify_items_in_cart(String count) {
 
         Assert.assertEquals(loginPage.goToInventoryPage().getCartItemCount(), count);
     }
+
+    @And("^I add all items to cart$")
+    public void add_all_items_to_cart() {
+
+        List<WebElement> buttons = loginPage.goToInventoryPage().getAllAddToCartButtons();
+        for (WebElement e : buttons) {
+            e.click();
+        }
+    }
+
 
 
     public void printList(List <String> list, String name){

@@ -1,9 +1,9 @@
+@regression
 Feature: Login Test
 
   Background: User navigates to Application URL
     Given The Application has been launched
 
-  @regression
   Scenario Outline: User should not be able to login with invalid credential
     When I enter '<username>' in Username text box
     And I enter '<password>' in Password text box
@@ -18,7 +18,6 @@ Feature: Login Test
       | test            | test@123     | Epic sadface: Username and password do not match any user in this service |
       | locked_out_user | secret_sauce | Epic sadface: Sorry, this user has been locked out.                       |
 
-  @regression
   Scenario Outline: User should be able to login with valid credential
     When I enter '<username>' in Username text box
     And I enter '<password>' in Password text box
