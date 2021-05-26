@@ -72,7 +72,7 @@ public class BaseClass{
 
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            options.setHeadless(true);
+            options.setHeadless(true); //set headless mode true or false
             driver = new ChromeDriver(options);
             log.debug("Initialize chrome driver");
         }
