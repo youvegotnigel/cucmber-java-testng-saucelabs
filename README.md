@@ -10,7 +10,6 @@ in terminal
 
 ## My First Cucumber Project
 
-
 Features:
 * Selenium
 * Java
@@ -20,6 +19,18 @@ Features:
 * Capture Screenshots
 * Cucumber
 * Cucumber Reports
+
+
+## Report Highlights
+
+* Feature overview:
+  <br>
+    ![feature overview page](./.README/image1.png)
+
+
+* Capture error with screenshots:
+  <br>
+    ![feature overview page](./.README/image2.png)
 
 ## Author
 * **Nigel Mulholland** - [Linkedin](https://www.linkedin.com/in/nigel-mulholland/) 
