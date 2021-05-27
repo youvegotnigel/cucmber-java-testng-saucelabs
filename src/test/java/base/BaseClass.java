@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Properties;
@@ -152,5 +153,16 @@ public class BaseClass{
 
     public WebDriver getDriver(){
         return eventFiringWebDriver;
+    }
+
+    /**
+     *
+     * @param text encrypted value
+     * @return actual value
+     */
+    public String decodeText(String text){
+        byte[] actualByte = Base64.getDecoder().decode(text);
+        String actualString = new String(actualByte);
+        return actualString;
     }
 }

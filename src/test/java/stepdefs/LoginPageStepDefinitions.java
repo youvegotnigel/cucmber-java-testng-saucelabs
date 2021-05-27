@@ -24,7 +24,7 @@ public class LoginPageStepDefinitions extends BaseClass {
 
         LoadConfigProperty();
         loginPage.setUsername(config.getProperty("username"));
-        loginPage.setPassword(config.getProperty("password"));
+        loginPage.setPassword(decodeText(config.getProperty("password")));
         loginPage.clickLoginButton();
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), "PRODUCTS");
     }
@@ -33,7 +33,7 @@ public class LoginPageStepDefinitions extends BaseClass {
     public void login_as_any_user(String string) throws IOException  {
         LoadConfigProperty();
         loginPage.setUsername(string);
-        loginPage.setPassword(config.getProperty("password"));
+        loginPage.setPassword(decodeText(config.getProperty("password")));
         loginPage.clickLoginButton();
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), "PRODUCTS");
     }
