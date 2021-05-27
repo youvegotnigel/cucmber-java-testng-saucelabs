@@ -1,4 +1,5 @@
 
+import base.BaseClass;
 import helpers.ReportHelper;
 import io.cucumber.testng.*;
 import org.apache.logging.log4j.LogManager;
@@ -19,13 +20,20 @@ import org.testng.annotations.Test;
                 //"rerun:target/cucumber-reports/rerun.txt"
         })
 public class TestRunner{
+    BaseClass baseClass;
 
     private TestNGCucumberRunner testNGCucumberRunner;
     public static final Logger log = LogManager.getLogger(TestRunner.class.getName());
 
     @BeforeClass(alwaysRun = true)
-    public void setUpClass() {
+    public void setUpClass() throws Exception {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+//        baseClass = new BaseClass();
+//        baseClass.openBrowser();
+//        baseClass.maximizeWindow();
+//        baseClass.implicitWait(30);
+//        baseClass.deleteAllCookies();
+//        baseClass.setEnv();
     }
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
@@ -51,6 +59,8 @@ public class TestRunner{
             log.warn("No feature files found");
             log.error(e.getMessage());
         }
+
+        //baseClass.tearDown();
     }
 
 }
