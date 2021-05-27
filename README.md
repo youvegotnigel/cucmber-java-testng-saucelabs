@@ -12,7 +12,7 @@ in terminal
 * Selenium
 * Java
 * TestNG
-* POM
+* Page Object Model
 * [Log4j 2](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)
 * Capture Screenshots
 * Cucumber BDD Framework
