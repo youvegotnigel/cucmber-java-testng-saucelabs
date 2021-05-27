@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="js/Chart.min.js"></script>
-<script type="text/javascript" src="js/moment.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
 <link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
 <link rel="stylesheet" href="css/font-awesome.min.css"/>
 <link rel="shortcut icon" href="images/favicon.png"/>
 
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
     // this will tell tablesorter to try looking for the data-value attribute
     // if present, it'll sort by that instead
@@ -41,8 +41,7 @@ $(document).ready(function() {
 
 
 
-  
-<title>Cucumber Reports (no 1) - Steps Overview</title>
+<title>Cucumber Reports  - Steps Overview</title>
 
 </head>
 <body>
@@ -52,10 +51,10 @@ $(document).ready(function() {
     <div class="collapse navbar-collapse">
       <p class="navbar-text navbar-left">Cucumber Report</p>
       <ul class="nav navbar-nav navbar-right">
-                <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
         <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
         <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
-                <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
       </ul>
     </div>
   </div>
@@ -64,37 +63,35 @@ $(document).ready(function() {
 
 <div class="container-fluid">
   <div class="col-md-5 col-md-offset-1">
-    
+
 <table class="table table-bordered" id="build-info">
   <thead>
     <tr>
       <th>Project</th>
-              <th>Number</th>
-            <th>Date</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
     <tr class="info">
-      <td>MyProjectName</td>
-              <td>1</td>
-            <td>27 May 2021, 06:13</td>
+      <td>cucumber-java-testng-saucelabs</td>
+      <td>27 May 2021, 06:19</td>
     </tr>
   </tbody>
 </table>
 
   </div>
   <div class="col-md-3 col-md-offset-2">
-      </div>
+  </div>
 </div>
 
 
 <div id="report-lead" class="container-fluid">
   <div class="col-md-10 col-md-offset-1">
     <h2>Steps Statistics</h2>
-          <p>The following graph shows step statistics for this build. Below list is based on results.
+      <p>The following graph shows step statistics for this build. Below list is based on results.
  step does not provide information about result then is not listed below.
  Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
-      </div>
+  </div>
 </div>
 
 <div class="container-fluid" id="report">
@@ -106,238 +103,271 @@ $(document).ready(function() {
           <tr class="header">
             <th>Implementation</th>
             <th>Occurrences</th>
-            <th>Duration</th>
-            <th>Average</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
             <th>Ratio</th>
           </tr>
         </thead>
 
         <tbody>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CartPageStepDefinitions.click_on_checkout()</td>
               <td>3</td>
-              <td class="duration" data-value="153091000">153ms</td>
-              <td class="duration" data-value="51030333">051ms</td>
+              <td class="duration" data-value="59404666">0.059</td>
+              <td class="duration" data-value="59404666">0.063</td>
+              <td class="duration" data-value="178214000">0.178</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CartPageStepDefinitions.item_is_displayed(io.cucumber.datatable.DataTable)</td>
               <td>1</td>
-              <td class="duration" data-value="491269000">491ms</td>
-              <td class="duration" data-value="491269000">491ms</td>
+              <td class="duration" data-value="522612000">0.522</td>
+              <td class="duration" data-value="522612000">0.522</td>
+              <td class="duration" data-value="522612000">0.522</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.click_on_checkout()</td>
               <td>5</td>
-              <td class="duration" data-value="237449000">237ms</td>
-              <td class="duration" data-value="47489800">047ms</td>
+              <td class="duration" data-value="57486800">0.057</td>
+              <td class="duration" data-value="57486800">0.067</td>
+              <td class="duration" data-value="287434000">0.287</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.click_on_finish()</td>
               <td>1</td>
-              <td class="duration" data-value="54383000">054ms</td>
-              <td class="duration" data-value="54383000">054ms</td>
+              <td class="duration" data-value="62699000">0.062</td>
+              <td class="duration" data-value="62699000">0.062</td>
+              <td class="duration" data-value="62699000">0.062</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.error_message_is_displayed(java.lang.String)</td>
               <td>3</td>
-              <td class="duration" data-value="83092000">083ms</td>
-              <td class="duration" data-value="27697333">027ms</td>
+              <td class="duration" data-value="28322666">0.028</td>
+              <td class="duration" data-value="28322666">0.033</td>
+              <td class="duration" data-value="84968000">0.084</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.input_value_for_first_name(java.lang.String)</td>
               <td>2</td>
-              <td class="duration" data-value="135887000">135ms</td>
-              <td class="duration" data-value="67943500">067ms</td>
+              <td class="duration" data-value="77200500">0.077</td>
+              <td class="duration" data-value="77200500">0.079</td>
+              <td class="duration" data-value="154401000">0.154</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.input_value_for_last_name(java.lang.String)</td>
               <td>2</td>
-              <td class="duration" data-value="186237000">186ms</td>
-              <td class="duration" data-value="93118500">093ms</td>
+              <td class="duration" data-value="116526500">0.116</td>
+              <td class="duration" data-value="116526500">0.153</td>
+              <td class="duration" data-value="233053000">0.233</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.input_value_for_zip_code(java.lang.String)</td>
               <td>1</td>
-              <td class="duration" data-value="86460000">086ms</td>
-              <td class="duration" data-value="86460000">086ms</td>
+              <td class="duration" data-value="96958000">0.096</td>
+              <td class="duration" data-value="96958000">0.096</td>
+              <td class="duration" data-value="96958000">0.096</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.logo_is_displayed()</td>
               <td>1</td>
-              <td class="duration" data-value="23032000">023ms</td>
-              <td class="duration" data-value="23032000">023ms</td>
+              <td class="duration" data-value="27479000">0.027</td>
+              <td class="duration" data-value="27479000">0.027</td>
+              <td class="duration" data-value="27479000">0.027</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.CheckoutPageStepDefinitions.text_is_displayed(java.lang.String)</td>
               <td>5</td>
-              <td class="duration" data-value="130655000">130ms</td>
-              <td class="duration" data-value="26131000">026ms</td>
+              <td class="duration" data-value="37782800">0.037</td>
+              <td class="duration" data-value="37782800">0.077</td>
+              <td class="duration" data-value="188914000">0.188</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.add_all_items_to_cart()</td>
               <td>5</td>
-              <td class="duration" data-value="1143186000">1s 143ms</td>
-              <td class="duration" data-value="228637200">228ms</td>
+              <td class="duration" data-value="297375200">0.297</td>
+              <td class="duration" data-value="297375200">0.347</td>
+              <td class="duration" data-value="1486876000">1.486</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.add_to_or_remove_from_cart(java.lang.String)</td>
               <td>7</td>
-              <td class="duration" data-value="322621000">322ms</td>
-              <td class="duration" data-value="46088714">046ms</td>
+              <td class="duration" data-value="53574714">0.053</td>
+              <td class="duration" data-value="53574714">0.057</td>
+              <td class="duration" data-value="375023000">0.375</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.all_inventory_item_descriptions_are_displayed(int)</td>
               <td>1</td>
-              <td class="duration" data-value="16315000">016ms</td>
-              <td class="duration" data-value="16315000">016ms</td>
+              <td class="duration" data-value="21671000">0.021</td>
+              <td class="duration" data-value="21671000">0.021</td>
+              <td class="duration" data-value="21671000">0.021</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.all_inventory_item_images_are_displayed(int)</td>
               <td>1</td>
-              <td class="duration" data-value="12769000">012ms</td>
-              <td class="duration" data-value="12769000">012ms</td>
+              <td class="duration" data-value="15197000">0.015</td>
+              <td class="duration" data-value="15197000">0.015</td>
+              <td class="duration" data-value="15197000">0.015</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.check_ascending_order(java.lang.String)</td>
               <td>2</td>
-              <td class="duration" data-value="320977000">320ms</td>
-              <td class="duration" data-value="160488500">160ms</td>
+              <td class="duration" data-value="189279500">0.189</td>
+              <td class="duration" data-value="189279500">0.200</td>
+              <td class="duration" data-value="378559000">0.378</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.check_descending_order(java.lang.String)</td>
               <td>2</td>
-              <td class="duration" data-value="323398000">323ms</td>
-              <td class="duration" data-value="161699000">161ms</td>
+              <td class="duration" data-value="190588500">0.190</td>
+              <td class="duration" data-value="190588500">0.209</td>
+              <td class="duration" data-value="381177000">0.381</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.click_on_cart_badge()</td>
               <td>5</td>
-              <td class="duration" data-value="308412000">308ms</td>
-              <td class="duration" data-value="61682400">061ms</td>
+              <td class="duration" data-value="67225200">0.067</td>
+              <td class="duration" data-value="67225200">0.075</td>
+              <td class="duration" data-value="336126000">0.336</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.click_on_filter_icon()</td>
               <td>4</td>
-              <td class="duration" data-value="247863000">247ms</td>
-              <td class="duration" data-value="61965750">061ms</td>
+              <td class="duration" data-value="83014250">0.083</td>
+              <td class="duration" data-value="83014250">0.144</td>
+              <td class="duration" data-value="332057000">0.332</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.select_items(java.lang.String)</td>
               <td>4</td>
-              <td class="duration" data-value="341996000">341ms</td>
-              <td class="duration" data-value="85499000">085ms</td>
+              <td class="duration" data-value="91969250">0.091</td>
+              <td class="duration" data-value="91969250">0.129</td>
+              <td class="duration" data-value="367877000">0.367</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.shopping_cart_badge_is_displayed()</td>
               <td>1</td>
-              <td class="duration" data-value="27850000">027ms</td>
-              <td class="duration" data-value="27850000">027ms</td>
+              <td class="duration" data-value="33726000">0.033</td>
+              <td class="duration" data-value="33726000">0.033</td>
+              <td class="duration" data-value="33726000">0.033</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.verify_inventory_page_landing(java.lang.String)</td>
               <td>7</td>
-              <td class="duration" data-value="247497000">247ms</td>
-              <td class="duration" data-value="35356714">035ms</td>
+              <td class="duration" data-value="41015142">0.041</td>
+              <td class="duration" data-value="41015142">0.058</td>
+              <td class="duration" data-value="287106000">0.287</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.InventoryPageStepDefinitions.verify_items_in_cart(java.lang.String)</td>
               <td>1</td>
-              <td class="duration" data-value="35946000">035ms</td>
-              <td class="duration" data-value="35946000">035ms</td>
+              <td class="duration" data-value="42472000">0.042</td>
+              <td class="duration" data-value="42472000">0.042</td>
+              <td class="duration" data-value="42472000">0.042</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.LoginPageStepDefinitions.application_is_launched()</td>
               <td>8</td>
-              <td class="duration" data-value="679362000">679ms</td>
-              <td class="duration" data-value="84920250">084ms</td>
+              <td class="duration" data-value="105654375">0.105</td>
+              <td class="duration" data-value="105654375">0.162</td>
+              <td class="duration" data-value="845235000">0.845</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.LoginPageStepDefinitions.click_login_button()</td>
               <td>8</td>
-              <td class="duration" data-value="5658009000">5s 658ms</td>
-              <td class="duration" data-value="707251125">707ms</td>
+              <td class="duration" data-value="736078125">0.736</td>
+              <td class="duration" data-value="736078125">5.141</td>
+              <td class="duration" data-value="5888625000">5.888</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.LoginPageStepDefinitions.display_error_message(java.lang.String)</td>
               <td>5</td>
-              <td class="duration" data-value="241921000">241ms</td>
-              <td class="duration" data-value="48384200">048ms</td>
+              <td class="duration" data-value="61063200">0.061</td>
+              <td class="duration" data-value="61063200">0.073</td>
+              <td class="duration" data-value="305316000">0.305</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.LoginPageStepDefinitions.enter_password(java.lang.String)</td>
               <td>8</td>
-              <td class="duration" data-value="818879000">818ms</td>
-              <td class="duration" data-value="102359875">102ms</td>
+              <td class="duration" data-value="138159750">0.138</td>
+              <td class="duration" data-value="138159750">0.170</td>
+              <td class="duration" data-value="1105278000">1.105</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.LoginPageStepDefinitions.enter_username(java.lang.String)</td>
               <td>8</td>
-              <td class="duration" data-value="1055292000">1s 055ms</td>
-              <td class="duration" data-value="131911500">131ms</td>
+              <td class="duration" data-value="171698125">0.171</td>
+              <td class="duration" data-value="171698125">0.287</td>
+              <td class="duration" data-value="1373585000">1.373</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.LoginPageStepDefinitions.login_as_valid_user()</td>
               <td>13</td>
-              <td class="duration" data-value="5424654000">5s 424ms</td>
-              <td class="duration" data-value="417281076">417ms</td>
+              <td class="duration" data-value="522456076">0.522</td>
+              <td class="duration" data-value="522456076">0.596</td>
+              <td class="duration" data-value="6791929000">6.791</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.ServiceHooks.beforeStartScenario(io.cucumber.java.Scenario)</td>
               <td>21</td>
-              <td class="duration" data-value="11127000">011ms</td>
-              <td class="duration" data-value="529857">000ms</td>
+              <td class="duration" data-value="399952">0.000</td>
+              <td class="duration" data-value="399952">0.001</td>
+              <td class="duration" data-value="8399000">0.008</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.ServiceHooks.endTest(io.cucumber.java.Scenario)</td>
               <td>21</td>
-              <td class="duration" data-value="1493220000">1s 493ms</td>
-              <td class="duration" data-value="71105714">071ms</td>
+              <td class="duration" data-value="71885571">0.071</td>
+              <td class="duration" data-value="71885571">0.085</td>
+              <td class="duration" data-value="1509597000">1.509</td>
               <td class="passed">100.00%</td>
             </tr>
-                      <tr>
+            <tr>
               <td class="location">stepdefs.ServiceHooks.initializeTest()</td>
               <td>21</td>
-              <td class="duration" data-value="14224776000">14s 224ms</td>
-              <td class="duration" data-value="677370285">677ms</td>
+              <td class="duration" data-value="872843523">0.872</td>
+              <td class="duration" data-value="872843523">6.551</td>
+              <td class="duration" data-value="18329714000">18.329</td>
               <td class="passed">100.00%</td>
             </tr>
-                  </tbody>
+        </tbody>
 
         <tfoot class="total">
           <tr>
             <td>31</td>
             <td>177</td>
-            <td class="duration">34s 537ms</td>
-            <td class="duration">195ms</td>
+            <td class="duration">0.237</td>
+            <td class="duration">18.329</td>
+            <td class="duration">42.052</td>
             <td>Totals</td>
           </tr>
         </tfoot>

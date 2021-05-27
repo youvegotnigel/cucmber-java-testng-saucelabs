@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="js/Chart.min.js"></script>
-<script type="text/javascript" src="js/moment.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
 <link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
 <link rel="stylesheet" href="css/font-awesome.min.css"/>
 <link rel="shortcut icon" href="images/favicon.png"/>
 
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
     // this will tell tablesorter to try looking for the data-value attribute
     // if present, it'll sort by that instead
@@ -41,12 +41,11 @@ $(document).ready(function() {
 
 
 
-  
-<title>Cucumber Reports (no 1) - Tags Overview</title>
+<title>Cucumber Reports  - Tags Overview</title>
 
 
-  <script type="text/javascript">
-  $(document).ready(function() {
+  <script>
+$(document).ready(function() {
 
     var chartData = {
         labels:  [ "@regression", ] ,
@@ -54,23 +53,28 @@ $(document).ready(function() {
             {
                 label: "Passed",
                 backgroundColor: "#92DD96",
-                data:  [ 100.00, ]             },
+                data:  [ 100.00, ] 
+            },
             {
                 label: "Failed",
                 backgroundColor: "#F2928C",
-                data:  [ 0.00, ]             },
+                data:  [ 0.00, ] 
+            },
             {
                 label: "Skipped",
                 backgroundColor: "#8AF",
-                data:  [ 0.00, ]             },
+                data:  [ 0.00, ] 
+            },
             {
                 label: "Pending",
                 backgroundColor: "#F5F28F",
-                data:  [ 0.00, ]             },
+                data:  [ 0.00, ] 
+            },
             {
                 label: "Undefined",
                 backgroundColor: "#F5B975",
-                data:  [ 0.00, ]             }
+                data:  [ 0.00, ] 
+            }
         ]
     };
 
@@ -106,10 +110,10 @@ $(document).ready(function() {
     <div class="collapse navbar-collapse">
       <p class="navbar-text navbar-left">Cucumber Report</p>
       <ul class="nav navbar-nav navbar-right">
-                <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
         <li role="presentation"      class="active" ><a href="overview-tags.html">Tags</a></li>
         <li role="presentation" ><a href="overview-steps.html">Steps</a></li>
-                <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
       </ul>
     </div>
   </div>
@@ -118,35 +122,33 @@ $(document).ready(function() {
 
 <div class="container-fluid">
   <div class="col-md-5 col-md-offset-1">
-    
+
 <table class="table table-bordered" id="build-info">
   <thead>
     <tr>
       <th>Project</th>
-              <th>Number</th>
-            <th>Date</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
     <tr class="info">
-      <td>MyProjectName</td>
-              <td>1</td>
-            <td>27 May 2021, 06:13</td>
+      <td>cucumber-java-testng-saucelabs</td>
+      <td>27 May 2021, 06:19</td>
     </tr>
   </tbody>
 </table>
 
   </div>
   <div class="col-md-3 col-md-offset-2">
-      </div>
+  </div>
 </div>
 
 
 <div id="report-lead" class="container-fluid">
   <div class="col-md-10 col-md-offset-1">
     <h2>Tags Statistics</h2>
-          <p>The following graph shows passing and failing statistics for tags</p>
-      </div>
+      <p>The following graph shows passing and failing statistics for tags</p>
+  </div>
 </div>
 
 
@@ -158,23 +160,23 @@ $(document).ready(function() {
     </div>
   </div>
 
-<br>
+<br/>
 <div class="container-fluid" id="report">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-              
+
 <table id="tablesorter" class="stats-table table-hover">
-  
+
 <thead>
   <tr class="header dont-sort">
-        <th></th>
+      <th></th>
     <th colspan="6">Steps</th>
     <th colspan="3">Scenarios</th>
     <th colspan="2">Features</th>
   </tr>
   <tr>
     <th>Tag</th>
-        <th class="passed">Passed</th>
+    <th class="passed">Passed</th>
     <th class="failed">Failed</th>
     <th class="skipped">Skipped</th>
     <th class="pending">Pending</th>
@@ -192,9 +194,9 @@ $(document).ready(function() {
 
 
   <tbody>
-          <tr>
-        <td class="tagname"><a href="report-tag_regression.html">@regression</a></td>
-        
+      <tr>
+        <td class="tagname"><a href="report-tag_233058432.html">@regression</a></td>
+
         <td      class="passed"    >80</td>
         <td >0</td>
         <td >0</td>
@@ -206,15 +208,15 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">21</td>
 
-        <td class="duration" data-value="11099797000">11s 099ms</td>
+        <td class="duration" data-value="12566187000">12.566</td>
         <td class="passed">Passed</td>
       </tr>
-      </tbody>
+  </tbody>
 
   <tfoot class="total">
     <tr>
-      <td>1</td>
-            <td>80</td>
+      <td></td>
+      <td>80</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -225,12 +227,12 @@ $(document).ready(function() {
       <td>0</td>
       <td>21</td>
 
-      <td class="duration">11s 099ms</td>
-      <td></td>
+      <td class="duration">12.566</td>
+      <td>1</td>
     </tr>
     <tr>
       <td></td>
-            <td>100.00%</td>
+      <td>100.00%</td>
       <td>0.00%</td>
       <td>0.00%</td>
       <td>0.00%</td>
@@ -245,7 +247,7 @@ $(document).ready(function() {
   </tfoot>
 </table>
 
-          </div>
+    </div>
   </div>
 </div>
 

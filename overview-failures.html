@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="js/Chart.min.js"></script>
-<script type="text/javascript" src="js/moment.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
 <link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
 <link rel="stylesheet" href="css/font-awesome.min.css"/>
 <link rel="shortcut icon" href="images/favicon.png"/>
 
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
     // this will tell tablesorter to try looking for the data-value attribute
     // if present, it'll sort by that instead
@@ -41,8 +41,7 @@ $(document).ready(function() {
 
 
 
-  
-<title>Cucumber Reports (no 1) - Failures Overview</title>
+<title>Cucumber Reports  - Failures Overview</title>
 
 </head>
 
@@ -53,10 +52,10 @@ $(document).ready(function() {
     <div class="collapse navbar-collapse">
       <p class="navbar-text navbar-left">Cucumber Report</p>
       <ul class="nav navbar-nav navbar-right">
-                <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
         <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
         <li role="presentation" ><a href="overview-steps.html">Steps</a></li>
-                <li role="presentation"  class="active" ><a href="overview-failures.html">Failures</a></li>
+        <li role="presentation"  class="active" ><a href="overview-failures.html">Failures</a></li>
       </ul>
     </div>
   </div>
@@ -65,46 +64,32 @@ $(document).ready(function() {
 
 <div class="container-fluid">
   <div class="col-md-5 col-md-offset-1">
-    
+
 <table class="table table-bordered" id="build-info">
   <thead>
     <tr>
       <th>Project</th>
-              <th>Number</th>
-            <th>Date</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
     <tr class="info">
-      <td>MyProjectName</td>
-              <td>1</td>
-            <td>27 May 2021, 06:13</td>
+      <td>cucumber-java-testng-saucelabs</td>
+      <td>27 May 2021, 06:19</td>
     </tr>
   </tbody>
 </table>
 
   </div>
   <div class="col-md-3 col-md-offset-2">
-      </div>
+  </div>
 </div>
 
 
 <div id="report-lead" class="container-fluid">
   <div class="col-md-10 col-md-offset-1">
     <h2>Failures Overview</h2>
-          <p>The following summary displays scenarios that failed.</p>
-      </div>
-</div>
-
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-10">
-      <i class="fa fa-chevron-circle-down fa-2x collapsable-control"
-        onClick="javascript:$('#report .collapsable-details').collapse('show')"></i>
-      <i class="fa fa-chevron-circle-up fa-2x collapsable-control"
-        onClick="javascript:$('#report .collapsable-details').collapse('hide')"></i>
-    </div>
+      <p>The following summary displays scenarios that failed.</p>
   </div>
 </div>
 
@@ -113,25 +98,13 @@ $(document).ready(function() {
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
 
-              <p>You have no failed scenarios in your Cucumber report</p>
-      
+        <p>You have no failed scenarios in your Cucumber report</p>
+
     </div>
   </div>
 </div>
 
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-10 col-md-offset-10">
-      <i class="fa fa-chevron-circle-down fa-2x collapsable-control"
-        onClick="javascript:$('#report .collapsable-details').collapse('show')"></i>
-      <i class="fa fa-chevron-circle-up fa-2x collapsable-control"
-        onClick="javascript:$('#report .collapsable-details').collapse('hide')"></i>
-    </div>
-  </div>
-</div>
-
-<br>
+<br/>
 
 <nav class="navbar navbar-default" id="footer">
   <div class="container-fluid">
