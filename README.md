@@ -32,5 +32,7 @@ Features:
   <br>
     ![steps page](./.README/image2.PNG)
 
+[Latest Report is Here🙂](https://youvegotnigel.github.io/cucmber-java-testng-saucelabs/)
+
 ## Author
 * **Nigel Mulholland** - [Linkedin](https://www.linkedin.com/in/nigel-mulholland/) 
