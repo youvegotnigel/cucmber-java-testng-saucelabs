@@ -25,12 +25,12 @@ Features:
 
 * Feature overview:
   <br>
-    ![feature overview page](./.README/image1.png)
+    ![feature overview](./.README/image1.PNG)
 
 
 * Capture error with screenshots:
   <br>
-    ![feature overview page](./.README/image2.png)
+    ![steps page](./.README/image2.PNG)
 
 ## Author
 * **Nigel Mulholland** - [Linkedin](https://www.linkedin.com/in/nigel-mulholland/) 
