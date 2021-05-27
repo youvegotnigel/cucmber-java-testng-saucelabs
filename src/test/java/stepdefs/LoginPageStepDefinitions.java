@@ -23,8 +23,8 @@ public class LoginPageStepDefinitions extends BaseClass {
     public void login_as_valid_user() throws IOException {
 
         LoadConfigProperty();
-        loginPage.setUsername(config.getProperty("username"));
-        loginPage.setPassword(decodeText(config.getProperty("password")));
+        loginPage.setUsername(config.getProperty("_username"));
+        loginPage.setPassword(decodeText(config.getProperty("_password")));
         loginPage.clickLoginButton();
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), "PRODUCTS");
     }
@@ -33,7 +33,7 @@ public class LoginPageStepDefinitions extends BaseClass {
     public void login_as_any_user(String string) throws IOException  {
         LoadConfigProperty();
         loginPage.setUsername(string);
-        loginPage.setPassword(decodeText(config.getProperty("password")));
+        loginPage.setPassword(decodeText(config.getProperty("_password")));
         loginPage.clickLoginButton();
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), "PRODUCTS");
     }
@@ -45,9 +45,10 @@ public class LoginPageStepDefinitions extends BaseClass {
     }
 
     @And("I enter {string} in Password text box")
-    public void enter_password(String string) {
+    public void enter_password(String string) throws IOException {
         //throw new PendingException();
-        loginPage.setPassword(string);
+        String value = getGlobalVariable(string);
+        loginPage.setPassword(decodeText(value));
     }
 
     @And("I click on login button")

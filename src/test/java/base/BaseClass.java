@@ -161,8 +161,21 @@ public class BaseClass{
      * @return actual value
      */
     public String decodeText(String text){
+        if(text == "" || text == null){
+            System.out.println("null text");
+            return " ";
+        }
         byte[] actualByte = Base64.getDecoder().decode(text);
         String actualString = new String(actualByte);
         return actualString;
+    }
+
+    public String getGlobalVariable(String variable) throws IOException {
+
+        if(variable.startsWith("_")){
+            LoadConfigProperty();
+            return config.getProperty(variable);
+        }
+        return  variable;
     }
 }

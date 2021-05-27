@@ -11,12 +11,12 @@ Feature: Login Test
     Then System should display '<errorMsg>' Error Message
 
     Examples:
-      | username        | password     | errorMsg                                                                  |
-      |                 |              | Epic sadface: Username is required                                        |
-      |                 | test@123     | Epic sadface: Username is required                                        |
-      | test            |              | Epic sadface: Password is required                                        |
-      | test            | test@123     | Epic sadface: Username and password do not match any user in this service |
-      | locked_out_user | secret_sauce | Epic sadface: Sorry, this user has been locked out.                       |
+      | username        | password  | errorMsg                                                                  |
+      |                 |           | Epic sadface: Username is required                                        |
+      |                 | test123   | Epic sadface: Username is required                                        |
+      | test            |           | Epic sadface: Password is required                                        |
+      | test            | test123   | Epic sadface: Username and password do not match any user in this service |
+      | locked_out_user | _password | Epic sadface: Sorry, this user has been locked out.                       |
 
   Scenario Outline: User should be able to login with valid credential
     When I enter '<username>' in Username text box
@@ -25,10 +25,10 @@ Feature: Login Test
     Then System should display page header 'PRODUCTS'
 
     Examples:
-      | username                | password     |
-      | standard_user           | secret_sauce |
-      | problem_user            | secret_sauce |
-      | performance_glitch_user | secret_sauce |
+      | username                | password  |
+      | standard_user           | _password |
+      | problem_user            | _password |
+      | performance_glitch_user | _password |
 
   @low
   Scenario: I should be able to login as a Standard User
