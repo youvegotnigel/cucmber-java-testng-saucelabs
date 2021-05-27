@@ -8,17 +8,15 @@ type
 ```
 in terminal
 
-## My First Cucumber Project
-
-Features:
+## Main Features
 * Selenium
 * Java
 * TestNG
 * POM
-* [Log4J](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)
+* [Log4j 2](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)
 * Capture Screenshots
-* Cucumber
-* Cucumber Reports
+* Cucumber BDD Framework
+* Cucumber HTML Report
 
 
 ## Report Highlights
