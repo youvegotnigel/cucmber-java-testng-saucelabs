@@ -24,10 +24,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Base64;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -40,7 +37,7 @@ public class BaseClass{
     private static final String fileSeparator = File.separator;
     public static final Logger log = LogManager.getLogger(BaseClass.class.getName());
 
-    public void LoadConfigProperty() throws IOException {
+    public void LoadConfigProperty(){
         try {
             config = new Properties();
             FileInputStream ip = new FileInputStream(
@@ -48,34 +45,39 @@ public class BaseClass{
             config.load(ip);
             log.info("Properties file loaded successfully");
         }catch (Exception e){
-            log.error("Configuration Properties file not found." + e.getStackTrace());
+            log.error("Configuration Properties file not found." + Arrays.toString(e.getStackTrace()));
         }
 
     }
 
-    public void openBrowser() throws Exception {
+    public void openBrowser(){
         // loads the config options
         LoadConfigProperty();
 
-        if (config.getProperty("BROWSER_TYPE").equals("firefox")) {
+        switch (config.getProperty("BROWSER_TYPE")) {
+            case "firefox":
 
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
-            log.debug("Initializing firefox driver");
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                log.debug("Initializing firefox driver");
+                break;
 
-        }else if(config.getProperty("BROWSER_TYPE").equals("edge")){
+            case "edge":
 
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
-            log.debug("Initialize edge driver");
+                WebDriverManager.edgedriver().setup();
+                driver = new EdgeDriver();
+                log.debug("Initialize edge driver");
+                break;
 
-        }else if (config.getProperty("BROWSER_TYPE").equals("chrome")) {
+            case "chrome":
 
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.setHeadless(true); //set headless mode true or false
-            driver = new ChromeDriver(options);
-            log.debug("Initialize chrome driver");
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.setHeadless(true); //set headless mode true or false
+
+                driver = new ChromeDriver(options);
+                log.debug("Initialize chrome driver");
+                break;
         }
 
         eventFiringWebDriver = new EventFiringWebDriver(driver);
@@ -107,9 +109,9 @@ public class BaseClass{
         log.debug("Deleting all cookies");
     }
 
-    public void setEnv() throws Exception {
+    public void setEnv(){
         LoadConfigProperty();
-        String baseUrl = config.getProperty("HOMEPAGE_URL");
+        String baseUrl = config.getProperty("LOGIN_URL");
         eventFiringWebDriver.get(baseUrl);
         //log.debug("Loading url : " + baseUrl);
     }
@@ -162,7 +164,6 @@ public class BaseClass{
      */
     public String decodeText(String text){
         if(text == "" || text == null){
-            System.out.println("null text");
             return " ";
         }
         byte[] actualByte = Base64.getDecoder().decode(text);
@@ -170,7 +171,7 @@ public class BaseClass{
         return actualString;
     }
 
-    public String getGlobalVariable(String variable) throws IOException {
+    public String getGlobalVariable(String variable){
 
         if(variable.startsWith("_")){
             LoadConfigProperty();
