@@ -13,7 +13,7 @@
             </Policies>
         </RollingFile>
         <Console name="Console">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level:%L %c{4} - %msg%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level: %-3L %c{4} - %msg%n"/>
         </Console>
     </Appenders>
     <Loggers>

@@ -13,7 +13,6 @@ public class LoginPageStepDefinitions extends BaseClass {
 
     @Given("The Application has been launched")
     public void application_is_launched() throws Exception {
-        //throw new PendingException();
         Assert.assertEquals(loginPage.getPageTitle(), "Swag Labs");
         Assert.assertTrue(loginPage.logoIsDisplayed());
 
@@ -21,10 +20,9 @@ public class LoginPageStepDefinitions extends BaseClass {
 
     @And("I log in as standard user")
     public void login_as_valid_user() throws IOException {
-
         LoadConfigProperty();
-        loginPage.setUsername(config.getProperty("username"));
-        loginPage.setPassword(decodeText(config.getProperty("password")));
+        loginPage.setUsername(getGlobalVariable("_username"));
+        loginPage.setPassword(decodeText(getGlobalVariable("_password")));
         loginPage.clickLoginButton();
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), "PRODUCTS");
     }
@@ -33,32 +31,28 @@ public class LoginPageStepDefinitions extends BaseClass {
     public void login_as_any_user(String string) throws IOException  {
         LoadConfigProperty();
         loginPage.setUsername(string);
-        loginPage.setPassword(decodeText(config.getProperty("password")));
+        loginPage.setPassword(decodeText(config.getProperty("_password")));
         loginPage.clickLoginButton();
         Assert.assertEquals(loginPage.goToInventoryPage().getPageHeader(), "PRODUCTS");
     }
 
     @And("I enter {string} in Username text box")
     public void enter_username(String string) {
-        //throw new PendingException();
         loginPage.setUsername(string);
     }
 
     @And("I enter {string} in Password text box")
-    public void enter_password(String string) {
-        //throw new PendingException();
-        loginPage.setPassword(string);
+    public void enter_password(String string) throws IOException {
+        loginPage.setPassword(decodeText(getGlobalVariable(string)));
     }
 
     @And("I click on login button")
     public void click_login_button() {
-        //throw new PendingException();
         loginPage.clickLoginButton();
     }
 
     @And("System should display {string} Error Message")
     public void display_error_message(String errorMsg) {
-        //throw new PendingException();
         Assert.assertEquals(loginPage.getErrorMsg(), errorMsg);
     }
 }
