@@ -57,19 +57,19 @@ public class BaseClass{
         // loads the config options
         LoadConfigProperty();
 
-        if (config.getProperty("browserType").equals("firefox")) {
+        if (config.getProperty("BROWSER_TYPE").equals("firefox")) {
 
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
             log.debug("Initializing firefox driver");
 
-        }else if(config.getProperty("browserType").equals("edge")){
+        }else if(config.getProperty("BROWSER_TYPE").equals("edge")){
 
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
             log.debug("Initialize edge driver");
 
-        }else if (config.getProperty("browserType").equals("chrome")) {
+        }else if (config.getProperty("BROWSER_TYPE").equals("chrome")) {
 
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
@@ -109,7 +109,7 @@ public class BaseClass{
 
     public void setEnv() throws Exception {
         LoadConfigProperty();
-        String baseUrl = config.getProperty("siteUrl");
+        String baseUrl = config.getProperty("HOMEPAGE_URL");
         eventFiringWebDriver.get(baseUrl);
         //log.debug("Loading url : " + baseUrl);
     }
