@@ -24,7 +24,7 @@ public class ReportHelper {
         // optionally add metadata presented on main page via properties file
         List<String> classificationFiles = new ArrayList<String>();
         classificationFiles.add("src/test/resources/config/config.properties");
-        configuration.addClassificationFiles(classificationFiles);
+        //configuration.addClassificationFiles(classificationFiles);
 
         ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration);
         reportBuilder.generateReports();
