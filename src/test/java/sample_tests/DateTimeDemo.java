@@ -4,11 +4,11 @@ import helpers.DateTime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DateTimeUtilityDemo {
+public class DateTimeDemo {
 
     public static void main(String[] args) {
 
-        final Logger log = LogManager.getLogger(DateTimeUtilityDemo.class.getName());
+        final Logger log = LogManager.getLogger(DateTimeDemo.class.getName());
         DateTime dateTime = new DateTime();
 
         //Variables
