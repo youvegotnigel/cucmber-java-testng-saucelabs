@@ -6,10 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -86,6 +83,7 @@ public class BaseClass{
     }
 
     public void maximizeWindow() {
+        eventFiringWebDriver.manage().window().setSize(new Dimension(1440, 900));
         eventFiringWebDriver.manage().window().maximize();
         loginPage = new LoginPage(this.eventFiringWebDriver);
         log.debug("Maximizing browser window");
@@ -157,11 +155,6 @@ public class BaseClass{
         return eventFiringWebDriver;
     }
 
-    /**
-     *
-     * @param text encrypted value
-     * @return actual value
-     */
     public String decodeText(String text){
         if(text == "" || text == null){
             return " ";

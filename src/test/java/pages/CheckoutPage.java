@@ -54,11 +54,6 @@ public class CheckoutPage {
     }
 
     public boolean logoIsDisplayed(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return driver.findElement(img_dilevery_logo).isDisplayed();
     }
 

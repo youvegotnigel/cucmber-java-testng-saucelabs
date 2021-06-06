@@ -34,4 +34,5 @@ Feature: Checkout Functionality
     When Click on finish button
     Then  System should display page header 'CHECKOUT: COMPLETE!'
     And Should display label THANK YOU FOR YOUR ORDER
+    And I wait for 10 seconds
     And Pony Express delivery logo should be displayed
