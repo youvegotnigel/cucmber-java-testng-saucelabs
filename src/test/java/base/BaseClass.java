@@ -157,7 +157,9 @@ public class BaseClass{
         return eventFiringWebDriver;
     }
 
+
     /**
+     * Decode Text
      *
      * @param text encrypted value
      * @return actual value
