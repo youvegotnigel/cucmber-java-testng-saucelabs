@@ -3,6 +3,7 @@ package stepdefs;
 import base.BaseClass;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.sl.In;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -194,6 +195,11 @@ public class InventoryPageStepDefinitions extends BaseClass {
         }
 
         return dList;
+    }
+
+    @And("^I wait for (.+) seconds$")
+    public void wait_time(String time) {
+        implicitWait(Integer.parseInt(time));
     }
 
 }
