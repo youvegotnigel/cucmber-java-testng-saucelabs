@@ -16,7 +16,7 @@ public class DateTimeDemo {
 
         String tomorrow = dateTime.formatIfDateTime("future");
         String twoDaysFromNow = dateTime.formatIfDateTime("future+2");
-        String threeDaysFromNow = dateTime.formatIfDateTime("future+2");
+        String threeDaysFromNow = dateTime.formatIfDateTime("future+3");
 
         String yesterday = dateTime.formatIfDateTime("previous");
         String twoDaysAgo = dateTime.formatIfDateTime("previous+2");
