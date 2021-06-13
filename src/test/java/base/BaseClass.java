@@ -10,7 +10,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,8 +56,13 @@ public class BaseClass{
         switch (config.getProperty("BROWSER_TYPE")) {
             case "firefox":
 
+                FirefoxBinary firefoxBinary = new FirefoxBinary();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setBinary(firefoxBinary);
+                firefoxOptions.setHeadless(true);  //set headless mode true or false
+
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
+                driver = new FirefoxDriver(firefoxOptions);
                 log.debug("Initializing firefox driver");
                 break;
 
