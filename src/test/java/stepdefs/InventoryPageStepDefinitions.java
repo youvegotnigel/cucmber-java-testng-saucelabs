@@ -196,7 +196,7 @@ public class InventoryPageStepDefinitions extends BaseClass {
         return dList;
     }
 
-    @And("^I wait for (.+) seconds$")
+    @And("^I wait for \"(.+)\" seconds$")
     public void wait_time(String time) {
         implicitWait(Integer.parseInt(time));
     }
