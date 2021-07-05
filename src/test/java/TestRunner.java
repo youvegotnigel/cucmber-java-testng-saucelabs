@@ -13,11 +13,11 @@ import org.testng.annotations.Test;
         features = "src/test/resources/features",
         glue = {"stepdefs"},
         tags = "@regression and not @low",
+        //dryRun = true,
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json"
-                //"rerun:target/cucumber-reports/rerun.txt"
         })
 public class TestRunner{
     BaseClass baseClass;
