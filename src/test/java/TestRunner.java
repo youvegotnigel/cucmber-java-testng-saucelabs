@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
         features = "src/test/resources/features",
         glue = {"stepdefs"},
         tags = "@regression and not @low",
-        //dryRun = true,
+        dryRun = false,
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",
