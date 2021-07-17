@@ -1,14 +1,12 @@
-package pages;
+package com.youvegotnigel.automation.pageobjects;
 
-import base.BaseClass;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends PageBase {
 
-    private WebDriver driver;
     private By usernameTextBox = By.xpath("//*[@id='user-name']");
     private By passwordTextBox = By.xpath("//*[@id='password']");
     private By errorMsg = By.xpath("//div[@class='error-message-container error']/h3");
@@ -19,7 +17,7 @@ public class LoginPage {
 
     //Constructor
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     //Methods

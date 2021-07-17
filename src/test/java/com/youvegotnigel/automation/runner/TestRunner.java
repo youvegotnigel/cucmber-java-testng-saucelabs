@@ -1,6 +1,7 @@
+package com.youvegotnigel.automation.runner;
 
-import base.BaseClass;
-import helpers.ReportHelper;
+import com.youvegotnigel.automation.base.TestBase;
+import com.youvegotnigel.automation.utils.ReportHelper;
 import io.cucumber.testng.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,8 +11,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "src/test/resources/features",
-        glue = {"stepdefs"},
+        features = "src/test/resources/features/default",
+        glue = {"com/youvegotnigel/automation/stepdefs"},
         tags = "@regression and not @low",
         dryRun = false,
         plugin = {
@@ -20,7 +21,7 @@ import org.testng.annotations.Test;
                 "json:target/cucumber-reports/CucumberTestReport.json"
         })
 public class TestRunner{
-    BaseClass baseClass;
+    TestBase testBase;
 
     private TestNGCucumberRunner testNGCucumberRunner;
     public static final Logger log = LogManager.getLogger(TestRunner.class.getName());

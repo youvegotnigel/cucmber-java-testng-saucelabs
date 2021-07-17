@@ -1,14 +1,9 @@
-package pages;
+package com.youvegotnigel.automation.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CheckoutPage {
-
-    private WebDriver driver;
+public class CheckoutPage extends PageBase{
 
     private By button_continue = By.xpath("//input[@id='continue']");
     private By input_first_name = By.xpath("//input[@id='first-name']");
@@ -20,7 +15,7 @@ public class CheckoutPage {
 
     //Constructor
     public CheckoutPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void clickOnContinueButton(){

@@ -1,4 +1,4 @@
-package sample_tests;
+package com.youvegotnigel.automation.sample_tests;
 
 import java.util.Base64;
 

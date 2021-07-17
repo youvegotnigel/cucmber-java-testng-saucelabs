@@ -1,15 +1,15 @@
-package stepdefs;
+package com.youvegotnigel.automation.stepdefs;
 
-import base.BaseClass;
+import com.youvegotnigel.automation.base.TestBase;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import org.testng.Assert;
-import pages.LoginPage;
+import com.youvegotnigel.automation.pageobjects.LoginPage;
 
 import java.util.List;
 import java.util.Map;
 
-public class CartPageStepDefinitions extends BaseClass {
+public class CartPageStepDefinitions extends TestBase {
 
     LoginPage loginPage = new LoginPage(eventFiringWebDriver);
 

@@ -1,7 +1,7 @@
-package base;
+package com.youvegotnigel.automation.base;
 
 import com.google.common.io.Files;
-import helpers.ListenerClass;
+import com.youvegotnigel.automation.utils.ListenerClass;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import pages.LoginPage;
+import com.youvegotnigel.automation.pageobjects.LoginPage;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,14 +27,14 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
-public class BaseClass{
+public class TestBase {
 
     public static WebDriver driver;
     public static EventFiringWebDriver eventFiringWebDriver;
     public static Properties config;
     protected LoginPage loginPage;
     private static final String fileSeparator = File.separator;
-    public static final Logger log = LogManager.getLogger(BaseClass.class.getName());
+    public static final Logger log = LogManager.getLogger(TestBase.class.getName());
 
     public void LoadConfigProperty(){
         try {

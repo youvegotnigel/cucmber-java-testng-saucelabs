@@ -1,6 +1,6 @@
-package stepdefs;
+package com.youvegotnigel.automation.stepdefs;
 
-import base.BaseClass;
+import com.youvegotnigel.automation.base.TestBase;
 import io.cucumber.java.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,17 +10,17 @@ import org.openqa.selenium.WebDriverException;
 
 public class ServiceHooks {
 
-    BaseClass baseClass;
+    TestBase testBase;
     public static final Logger log = LogManager.getLogger(ServiceHooks.class.getName());
 
     @Before
     public void initializeTest() throws Exception{
-        baseClass = new BaseClass();
-        baseClass.openBrowser();
-        baseClass.maximizeWindow();
-        baseClass.implicitWait(30);
-        baseClass.deleteAllCookies();
-        baseClass.setEnv();
+        testBase = new TestBase();
+        testBase.openBrowser();
+        testBase.maximizeWindow();
+        testBase.implicitWait(30);
+        testBase.deleteAllCookies();
+        testBase.setEnv();
     }
 
     @Before
@@ -31,7 +31,7 @@ public class ServiceHooks {
     @AfterStep
     public void takeScreenshotAfterEachStep(Scenario scenario){
         try {
-            TakesScreenshot screenshot = (TakesScreenshot) baseClass.driver;
+            TakesScreenshot screenshot = (TakesScreenshot) testBase.driver;
             byte[] data = screenshot.getScreenshotAs(OutputType.BYTES);
             scenario.attach(data, "image/png", "Attachment");
             //log.debug("Screenshot taken");
@@ -50,7 +50,7 @@ public class ServiceHooks {
         if(scenario.isFailed()){
             log.error("✘ Failed scenario : " + scenario.getName());
         }
-        baseClass.tearDown();
+        testBase.tearDown();
     }
 
 //    @BeforeStep

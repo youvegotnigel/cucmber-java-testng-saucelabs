@@ -1,6 +1,6 @@
-package sample_tests;
+package com.youvegotnigel.automation.sample_tests;
 
-import helpers.ExcelUtility;
+import com.youvegotnigel.automation.utils.ExcelUtility;
 
 public class ExcelTestDemo {
 

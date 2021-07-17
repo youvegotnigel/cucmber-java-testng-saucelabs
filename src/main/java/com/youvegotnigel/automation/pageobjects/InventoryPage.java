@@ -1,4 +1,4 @@
-package pages;
+package com.youvegotnigel.automation.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,9 +6,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class InventoryPage {
+public class InventoryPage extends PageBase{
 
-    private WebDriver driver;
     private By pageHeader = By.xpath("//span[@class='title']");
     private By item_names = By.xpath("//div[@class='inventory_item_name']");
     private By item_prices = By.xpath("//div[@class='inventory_item_price']");
@@ -22,7 +21,7 @@ public class InventoryPage {
 
     //Constructor
     public InventoryPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     //Methods

@@ -1,4 +1,4 @@
-package helpers;
+package com.youvegotnigel.automation.utils;
 
 import org.apache.commons.lang3.time.DateUtils;
 

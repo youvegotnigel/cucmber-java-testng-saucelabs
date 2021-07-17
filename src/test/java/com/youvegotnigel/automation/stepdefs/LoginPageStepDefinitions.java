@@ -1,14 +1,14 @@
-package stepdefs;
+package com.youvegotnigel.automation.stepdefs;
 
-import base.BaseClass;
+import com.youvegotnigel.automation.base.TestBase;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.testng.Assert;
-import pages.LoginPage;
+import com.youvegotnigel.automation.pageobjects.LoginPage;
 import java.io.IOException;
 
 
-public class LoginPageStepDefinitions extends BaseClass {
+public class LoginPageStepDefinitions extends TestBase {
     LoginPage loginPage = new LoginPage(eventFiringWebDriver);
 
     @Given("The Application has been launched")

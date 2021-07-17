@@ -1,18 +1,18 @@
-package stepdefs;
+package com.youvegotnigel.automation.stepdefs;
 
-import base.BaseClass;
+import com.youvegotnigel.automation.base.TestBase;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import pages.LoginPage;
+import com.youvegotnigel.automation.pageobjects.LoginPage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class InventoryPageStepDefinitions extends BaseClass {
+public class InventoryPageStepDefinitions extends TestBase {
 
     //InventoryPage inventoryPage = new InventoryPage(driver);
     LoginPage loginPage = new LoginPage(eventFiringWebDriver);

@@ -1,6 +1,6 @@
-package sample_tests;
+package com.youvegotnigel.automation.sample_tests;
 
-import helpers.DateTime;
+import com.youvegotnigel.automation.utils.DateTime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

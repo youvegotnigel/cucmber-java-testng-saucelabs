@@ -1,4 +1,4 @@
-package sample_tests;
+package com.youvegotnigel.automation.sample_tests;
 /**
  * @author: youvegotnigel
  * This Class is created to check the log4j2 functionality, it is an independent class.

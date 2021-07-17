@@ -1,17 +1,16 @@
-package pages;
+package com.youvegotnigel.automation.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CartPage {
+public class CartPage extends PageBase{
 
-    private WebDriver driver;
     private By pageHeader = By.xpath("//span[@class='title']");
     private By button_checkout = By.xpath("//button[@id='checkout']");
 
     //Constructor
     public CartPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     //Methods
