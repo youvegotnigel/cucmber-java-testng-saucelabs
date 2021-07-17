@@ -30,10 +30,10 @@ Feature: Login Test
       | problem_user            | _password |
       | performance_glitch_user | _password |
 
-  @low
+  @ignore
   Scenario: I should be able to login as a Standard User
     Then I log in as standard user
 
-  @low
+  @ignore
   Scenario: I should be able to login as any type of user
     Then I log in as 'problem_user' user
