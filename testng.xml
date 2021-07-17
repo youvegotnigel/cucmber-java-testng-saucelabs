@@ -3,11 +3,11 @@
 <suite name="Testng Cucumber Suite" parallel="tests">
 
     <listeners>
-        <listener class-name="helpers.ListenerClass"/>
+        <listener class-name="com.youvegotnigel.automation.utils.ListenerClass"/>
     </listeners>
     <test name="Cucumber Test">
         <classes>
-            <class name="TestRunner"></class>
+            <class name="com.youvegotnigel.automation.runner.TestRunner"></class>
         </classes>
     </test>
 </suite>
