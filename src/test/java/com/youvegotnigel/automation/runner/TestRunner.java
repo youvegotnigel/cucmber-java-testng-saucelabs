@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/resources/features/default",
         glue = {"com/youvegotnigel/automation/stepdefs"},
-        tags = "@regression and not @low",
+        tags = "@regression and not @ignore",
         dryRun = false,
         plugin = {
                 "pretty",
@@ -29,12 +29,6 @@ public class TestRunner{
     @BeforeClass(alwaysRun = true)
     public void setUpClass() throws Exception {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-//        baseClass = new BaseClass();
-//        baseClass.openBrowser();
-//        baseClass.maximizeWindow();
-//        baseClass.implicitWait(30);
-//        baseClass.deleteAllCookies();
-//        baseClass.setEnv();
     }
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
@@ -60,8 +54,6 @@ public class TestRunner{
             log.warn("No feature files found");
             log.error(e.getMessage());
         }
-
-        //baseClass.tearDown();
     }
 
 }
