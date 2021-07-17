@@ -19,7 +19,7 @@ public class CheckoutPage extends PageBase{
     }
 
     public void clickOnContinueButton(){
-        driver.findElement(button_continue).click();
+        click(button_continue);
     }
 
     public boolean verifyErrorMessage(String error){
@@ -28,28 +28,27 @@ public class CheckoutPage extends PageBase{
     }
 
     public void inputFirstName(String value){
-        driver.findElement(input_first_name).sendKeys(value);
+        sendText(input_first_name, value);
     }
 
     public void inputLastName(String value){
-        driver.findElement(input_last_name).sendKeys(value);
+        sendText(input_last_name, value);
     }
 
     public void inputZipCode(String value){
-        driver.findElement(input_zip_code).sendKeys(value);
+        sendText(input_zip_code, value);
     }
 
     public boolean textIsDisplayed(String text){
-        String xpath = "//*[normalize-space()='" + text + "']";
-        return driver.findElement(By.xpath(xpath)).isDisplayed();
+        return isDisplayedInNormalizeSpace(text);
     }
 
     public void clickOnFinishButton(){
-        driver.findElement(button_finish).click();
+        click(button_finish);
     }
 
     public boolean logoIsDisplayed(){
-        return driver.findElement(img_dilevery_logo).isDisplayed();
+        return isDisplayed(img_dilevery_logo);
     }
 
 }

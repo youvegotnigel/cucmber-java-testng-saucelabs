@@ -19,12 +19,11 @@ public class CartPage extends PageBase{
     }
 
     public boolean textDisplayed(String text){
-        String xpath = "//div[normalize-space()='"+ text +"']";
-        return driver.findElement(By.xpath(xpath)).isDisplayed();
+        return isDisplayedInNormalizeSpace(text);
     }
 
     public void clickOnCheckout(){
-        driver.findElement(button_checkout).click();
+        click(button_checkout);
     }
 
     //pass the driver for the next page

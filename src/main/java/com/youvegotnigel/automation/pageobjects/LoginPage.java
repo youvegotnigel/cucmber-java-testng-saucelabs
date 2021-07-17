@@ -22,43 +22,25 @@ public class LoginPage extends PageBase {
 
     //Methods
     public void setUsername(String username) {
-        driver.findElement(usernameTextBox).clear();
-        driver.findElement(usernameTextBox).sendKeys(username);
-        //log.info("Element found for username: " + usernameTextBox);
-        //log.debug("Input " + username + "for username");
+        clearText(usernameTextBox);
+        sendText(usernameTextBox, username);
     }
 
     public void setPassword(String password) {
-        driver.findElement(passwordTextBox).clear();
-        driver.findElement(passwordTextBox).sendKeys(password);
-        //log.info("Element found for password : " + passwordTextBox);
-        //log.debug("Input " + password + "for password");
+        clearText(passwordTextBox);
+        sendText(passwordTextBox, password);
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
-        //log.info("Element found for login button : " + loginButton);
-        //log.debug("Click on login button");
+        click(loginButton);
     }
 
     public boolean logoIsDisplayed() {
-
-        //log.info("Element found for logo : " + logo);
-        //log.debug("Logo is displayed");
-        return driver.findElement(logo).isDisplayed();
+        return isDisplayed(logo);
     }
 
     public String getErrorMsg() {
-
-        //log.info("Element found for error message : " + errorMsg);
-        //log.debug("Error message is displayed");
-        return driver.findElement(errorMsg).getText();
-    }
-
-    public String getPageTitle() {
-
-        //log.debug("Found page title : " + driver.getTitle());
-        return driver.getTitle();
+        return getText(errorMsg);
     }
 
     //pass the driver for the next page

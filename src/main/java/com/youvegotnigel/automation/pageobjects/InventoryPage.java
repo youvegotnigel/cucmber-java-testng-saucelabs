@@ -54,23 +54,22 @@ public class InventoryPage extends PageBase{
     }
 
     public boolean shoppingCartIsDisplayed(){
-        return driver.findElement(shopping_cart_badge).isDisplayed();
+        return isDisplayed(shopping_cart_badge);
     }
 
     public void clickOnShoppingCart(){
-        driver.findElement(shopping_cart_badge).click();
+        click(shopping_cart_badge);
     }
 
     public String getCartItemCount(){
-        return driver.findElement(cart_item_count).getText();
+        return getText(cart_item_count);
     }
 
     public String getPageHeader(){
-        return driver.findElement(pageHeader).getText();
+        return getText(pageHeader);
     }
 
     public void clickOnAddCartOrRemove(String item_name){
-
         String  xpath = "//div[@class='inventory_item_name' and text()="+ item_name + "]/../../following-sibling::div/button";
         driver.findElement(By.xpath(xpath)).click();
     }
