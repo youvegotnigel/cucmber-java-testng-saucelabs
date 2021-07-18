@@ -1,9 +1,10 @@
 package com.youvegotnigel.automation.pageobjects;
 
+import com.youvegotnigel.automation.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckoutPage extends PageBase{
+public class CheckoutPage extends PageBase {
 
     private By button_continue = By.xpath("//input[@id='continue']");
     private By input_first_name = By.xpath("//input[@id='first-name']");
