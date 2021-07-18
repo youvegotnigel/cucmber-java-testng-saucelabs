@@ -1,21 +1,19 @@
 package com.youvegotnigel.automation.stepdefs;
 
 import com.youvegotnigel.automation.base.TestBase;
+import com.youvegotnigel.automation.pageobjects.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.testng.Assert;
-import com.youvegotnigel.automation.pageobjects.LoginPage;
 import java.io.IOException;
-
 
 public class LoginPageStepDefinitions extends TestBase {
     LoginPage loginPage = new LoginPage(eventFiringWebDriver);
 
     @Given("The Application has been launched")
-    public void application_is_launched() throws Exception {
+    public void application_is_launched() {
         Assert.assertEquals(loginPage.getPageTitle(), "Swag Labs");
         Assert.assertTrue(loginPage.logoIsDisplayed());
-
     }
 
     @And("I log in as standard user")
