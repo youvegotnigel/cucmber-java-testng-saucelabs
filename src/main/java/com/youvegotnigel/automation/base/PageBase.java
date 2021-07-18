@@ -1,4 +1,4 @@
-package com.youvegotnigel.automation.pageobjects;
+package com.youvegotnigel.automation.base;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageBase {
-    WebDriver driver;
+    public static WebDriver driver;
     public static final long WAIT = 10;
 
     public static final Logger log = LogManager.getLogger(PageBase.class.getName());
@@ -52,14 +52,69 @@ public class PageBase {
         return driver.findElement(by).isDisplayed();
     }
 
+    public String getAttribute(By by, String attribute) {
+        waitForVisibility(driver.findElement(by));
+        return driver.findElement(by).getAttribute(attribute);
+    }
+
+    // ############################################ Generic xpath's ############################################
+
+    public void clickOnButtonByName(String text) {
+        String xpath = "//button[contains(normalize-space(),'" + text + "')]";
+        WebElement element = driver.findElement(By.xpath(xpath));
+        try {
+            element.click();
+        } catch (Exception e) {
+            log.debug("Could not click on web element");
+            log.debug("xpath : " + xpath);
+            log.error(e.getMessage());
+        }
+    }
+
+    public void clickOnButtonByName(String text, String index) {
+        String xpath = "(//button[contains(normalize-space(),'" + text + "')])["+ index +"]" ;
+        WebElement element = driver.findElement(By.xpath(xpath));
+        try {
+            element.click();
+        } catch (Exception e) {
+            log.debug("Could not click on web element");
+            log.debug("xpath : " + xpath);
+            log.error(e.getMessage());
+        }
+    }
+
+    public void clickOnLinkByName(String text) {
+        String xpath = "//a[contains(normalize-space(),'" + text + "')]";
+        WebElement element = driver.findElement(By.xpath(xpath));
+        try {
+            element.click();
+        } catch (Exception e) {
+            log.debug("Could not click on web element");
+            log.debug("xpath : " + xpath);
+            log.error(e.getMessage());
+        }
+    }
+
+    public void clickOnLinkByName(String text, String index) {
+        String xpath = "(//a[contains(normalize-space(),'" + text + "')])["+ index +"]" ;
+        WebElement element = driver.findElement(By.xpath(xpath));
+        try {
+            element.click();
+        } catch (Exception e) {
+            log.debug("Could not click on web element");
+            log.debug("xpath : " + xpath);
+            log.error(e.getMessage());
+        }
+    }
+
     public boolean isDisplayedInNormalizeSpace(String text) {
         String xpath = "//*[normalize-space()='" + text + "']";
         WebElement element = driver.findElement(By.xpath(xpath));
         return element.isDisplayed();
     }
 
-    public boolean isDisplayedInNormalizeSpace(String text, int index) {
-        String xpath = "(//*[normalize-space()='" + text + "'])[" + index + "]";
+    public boolean isDisplayedInNormalizeSpace(String text, String index) {
+        String xpath = "(//*[normalize-space()='" + text + "'])["+ index +"]" ;
         WebElement element = driver.findElement(By.xpath(xpath));
         return element.isDisplayed();
     }
@@ -76,8 +131,8 @@ public class PageBase {
         }
     }
 
-    public void clickOnNormalizeSpace(String text, int index) {
-        String xpath = "(//*[normalize-space()='" + text + "'])[" + index + "]";
+    public void clickOnNormalizeSpace(String text, String index) {
+        String xpath = "(//*[normalize-space()='" + text + "'])["+ index +"]" ;
         WebElement element = driver.findElement(By.xpath(xpath));
         try {
             element.click();
@@ -86,10 +141,5 @@ public class PageBase {
             log.debug("xpath : " + xpath);
             log.error(e.getMessage());
         }
-    }
-
-    public String getAttribute(By by, String attribute) {
-        waitForVisibility(driver.findElement(by));
-        return driver.findElement(by).getAttribute(attribute);
     }
 }
