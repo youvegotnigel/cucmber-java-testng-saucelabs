@@ -194,6 +194,19 @@ public class TestBase {
         }
     }
 
+    public void setTextInputForLabel(String label_name, String value){
+
+        String xpath = "//label[contains(text(),'"+ label_name +"')]/following::input[1]";
+        WebElement element = driver.findElement(By.xpath(xpath));
+        element.sendKeys(getGlobalVariable(value));
+    }
+
+    public void setTextInputForLabel(String label_name, String index, String value){
+
+        String xpath = "(//label[contains(text(),'"+ label_name +"')])[" + index + "]/following::input[1]";
+        WebElement element = driver.findElement(By.xpath(xpath));
+        element.sendKeys(getGlobalVariable(value));
+    }
 
 
 }
