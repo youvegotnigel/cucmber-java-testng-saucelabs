@@ -18,6 +18,16 @@ Feature: Template
     ## Click link/button
   Scenario: Template for Click link/button Scenarios
     And I click on login button
+    And I click on '<button_name>' button
+    And I click on '<link_name>' link
+    And I click on the '<normalize_name>' button
+    And I click on the '<normalize_name>' link
+    And I click on the '<normalize_name>' text
+
+    ## Is displayed text
+  Scenario: Template for is text displayed Scenarios
+    And I should see the text '<any_text>' displayed
+    And I should not see the text '<any_text>' displayed
 
     ## Select from dropdown
   Scenario: Template for Select from dropdown Scenarios
