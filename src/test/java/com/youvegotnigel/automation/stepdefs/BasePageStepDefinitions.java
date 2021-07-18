@@ -26,7 +26,7 @@ public class BasePageStepDefinitions extends TestBase{
 
         if(text.matches(".*\\[[\\d.]]")){
             var valueAndIndex = getValueAndIndex(text);
-            pageBase.clickOnButtonByName(text, valueAndIndex[1]);
+            pageBase.clickOnButtonByName(valueAndIndex[0], valueAndIndex[1]);
         }else {
             pageBase.clickOnButtonByName(text);
         }
@@ -37,7 +37,7 @@ public class BasePageStepDefinitions extends TestBase{
 
         if(text.matches(".*\\[[\\d.]]")){
             var valueAndIndex = getValueAndIndex(text);
-            pageBase.clickOnLinkByName(text, valueAndIndex[1]);
+            pageBase.clickOnLinkByName(valueAndIndex[0], valueAndIndex[1]);
         }else {
             pageBase.clickOnLinkByName(text);
         }
@@ -59,7 +59,7 @@ public class BasePageStepDefinitions extends TestBase{
 
         if(text.matches(".*\\[[\\d.]]")){
             var valueAndIndex = getValueAndIndex(text);
-            Assert.assertTrue(pageBase.isDisplayedInNormalizeSpace(text, valueAndIndex[1]),"Not found text ::: "+ text);
+            Assert.assertTrue(pageBase.isDisplayedInNormalizeSpace(valueAndIndex[0], valueAndIndex[1]),"Not found text ::: "+ text);
         }else {
             Assert.assertTrue(pageBase.isDisplayedInNormalizeSpace(text),"Not found text ::: "+ text);
         }
@@ -70,7 +70,7 @@ public class BasePageStepDefinitions extends TestBase{
 
         if(text.matches(".*\\[[\\d.]]")){
             var valueAndIndex = getValueAndIndex(text);
-            Assert.assertFalse(pageBase.isDisplayedInNormalizeSpace(text, valueAndIndex[1]),"Found text ::: "+ text);
+            Assert.assertFalse(pageBase.isDisplayedInNormalizeSpace(valueAndIndex[0], valueAndIndex[1]),"Found text ::: "+ text);
         }else {
             Assert.assertFalse(pageBase.isDisplayedInNormalizeSpace(text),"Found text ::: "+ text);
         }
@@ -81,7 +81,7 @@ public class BasePageStepDefinitions extends TestBase{
 
         if(question.matches(".*\\[[\\d.]]")){
             var valueAndIndex = getValueAndIndex(question);
-            setTextInputForLabel(question, valueAndIndex[1], answer);
+            setTextInputForLabel(valueAndIndex[0], valueAndIndex[1], answer);
         }else {
             setTextInputForLabel(question, answer);
         }

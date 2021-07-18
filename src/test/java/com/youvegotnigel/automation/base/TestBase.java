@@ -183,7 +183,7 @@ public class TestBase {
 
     public String[] getValueAndIndex(String value) {
         String[] values = value.split(Pattern.quote("["));
-        values[1] = values[1].replaceAll("[^\\d.]", " ");
+        values[1] = values[1].replaceAll("[^\\d.]", "");
         return values;
     }
 
@@ -203,7 +203,7 @@ public class TestBase {
 
     public void setTextInputForLabel(String label_name, String index, String value){
 
-        String xpath = "(//label[contains(text(),'"+ label_name +"')])[" + index + "]/following::input[1]";
+        String xpath = "(//label[contains(text(),'"+ label_name +"')])["+ index +"]/following::input[1]";
         WebElement element = driver.findElement(By.xpath(xpath));
         element.sendKeys(getGlobalVariable(value));
     }
