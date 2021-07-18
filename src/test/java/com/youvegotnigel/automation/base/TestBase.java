@@ -186,4 +186,14 @@ public class TestBase {
         values[1] = values[1].replaceAll("[^\\d.]", " ");
         return values;
     }
+
+    public void printList(List <String> list, String name){
+        System.out.println("List name : " + name);
+        for(String a : list){
+            System.out.println("list : " + a);
+        }
+    }
+
+
+
 }
