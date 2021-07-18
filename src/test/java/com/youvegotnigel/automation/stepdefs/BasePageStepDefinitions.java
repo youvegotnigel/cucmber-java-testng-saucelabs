@@ -76,6 +76,17 @@ public class BasePageStepDefinitions extends TestBase{
         }
     }
 
+    @And("^I set value \"(.+)\" for \"(.+)\"$")
+    public void set_text_for_label(String answer, String question) {
+
+        if(question.matches(".*\\[[\\d.]]")){
+            var valueAndIndex = getValueAndIndex(question);
+            setTextInputForLabel(question, valueAndIndex[1], answer);
+        }else {
+            setTextInputForLabel(question, answer);
+        }
+    }
+
     public List<String> get_table_list_in_application(String column){
 
          List<String> applicationList = new ArrayList<>();
