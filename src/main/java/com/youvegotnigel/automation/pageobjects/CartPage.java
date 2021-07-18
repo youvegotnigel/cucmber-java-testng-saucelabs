@@ -1,9 +1,10 @@
 package com.youvegotnigel.automation.pageobjects;
 
+import com.youvegotnigel.automation.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CartPage extends PageBase{
+public class CartPage extends PageBase {
 
     private By pageHeader = By.xpath("//span[@class='title']");
     private By button_checkout = By.xpath("//button[@id='checkout']");

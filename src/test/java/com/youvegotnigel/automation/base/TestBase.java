@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 
 public class TestBase {
@@ -178,5 +179,11 @@ public class TestBase {
             return config.getProperty(variable);
         }
         return  variable;
+    }
+
+    public String[] getValueAndIndex(String value) {
+        String[] values = value.split(Pattern.quote("["));
+        values[1] = values[1].replaceAll("[^\\d.]", " ");
+        return values;
     }
 }
