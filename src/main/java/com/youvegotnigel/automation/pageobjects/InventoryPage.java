@@ -1,12 +1,13 @@
 package com.youvegotnigel.automation.pageobjects;
 
+import com.youvegotnigel.automation.base.PageBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class InventoryPage extends PageBase{
+public class InventoryPage extends PageBase {
 
     private By pageHeader = By.xpath("//span[@class='title']");
     private By item_names = By.xpath("//div[@class='inventory_item_name']");
