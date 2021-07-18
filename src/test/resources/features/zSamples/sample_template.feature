@@ -55,3 +55,9 @@ Feature: Template
     Then Item 'names' should be in ascending order
     Then Item 'prices' should be in descending order
     Then Item 'prices' should be in ascending order
+
+  Scenario: ## Table Ascending/Descending
+    Then Get values for "Name" column in table and verify strings in descending order
+    Then Get values for "ID" column in table and verify numbers in descending order
+    Then Get values for "Name" column in table and verify strings in ascending order
+    Then Get values for "ID" column in table and verify numbers in ascending order
