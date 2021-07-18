@@ -24,12 +24,12 @@ public class LoginPage extends PageBase {
     //Methods
     public void setUsername(String username) {
         clearText(usernameTextBox);
-        sendText(usernameTextBox, username);
+        setText(usernameTextBox, username);
     }
 
     public void setPassword(String password) {
         clearText(passwordTextBox);
-        sendText(passwordTextBox, password);
+        setText(passwordTextBox, password);
     }
 
     public void clickLoginButton() {

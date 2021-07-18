@@ -29,15 +29,15 @@ public class CheckoutPage extends PageBase {
     }
 
     public void inputFirstName(String value){
-        sendText(input_first_name, value);
+        setText(input_first_name, value);
     }
 
     public void inputLastName(String value){
-        sendText(input_last_name, value);
+        setText(input_last_name, value);
     }
 
     public void inputZipCode(String value){
-        sendText(input_zip_code, value);
+        setText(input_zip_code, value);
     }
 
     public boolean textIsDisplayed(String text){

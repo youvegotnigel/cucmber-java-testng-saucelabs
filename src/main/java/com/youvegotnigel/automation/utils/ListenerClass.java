@@ -52,6 +52,9 @@ public class ListenerClass implements ITestListener, ISuiteListener, IInvokedMet
     @Override
     public void onTestSuccess(ITestResult result) {
 
+        if (result.getStatus() == ITestResult.SUCCESS) {
+            //log.info("The test case " + result.getName() + " has been passed");
+        }
     }
 
     @Override
