@@ -14,6 +14,8 @@ Feature: Template
     And I input Ben for First Name
     And I input Dover for Last Name
     And I input 99999 for Zip Code
+    And I set value "Ben" for "First Name"
+    And I set value "24" for "Age[2]"
 
     ## Click link/button
   Scenario: Template for Click link/button Scenarios
