@@ -37,7 +37,7 @@ public class PageBase {
         driver.findElement(by).click();
     }
 
-    public void sendText(By by, String text) {
+    public void setText(By by, String text) {
         waitForVisibility(driver.findElement(by));
         driver.findElement(by).sendKeys(text);
     }
