@@ -28,6 +28,7 @@ public class DateTimeDemo {
 
         String nowHMS         = dateTime.formatIfDateTime("now HH:mm:ss");
         String nowDigital     = dateTime.formatIfDateTime("now");
+        String nowDateTime    = dateTime.formatIfDateTime("today dd/MM/yyyy HH:mm");
 
         String todayNow       = dateTime.formatIfDateTime("today+now");
 
@@ -59,6 +60,7 @@ public class DateTimeDemo {
 
         log.debug("Current time in hh:mm:ss       : " + nowHMS);
         log.debug("Current time in digital format : " + nowDigital);
+        log.debug("Now Date Time                  : " + nowDateTime);
 
 
         log.debug("Hour in 3 hours                : " + nowHHFutureTime);

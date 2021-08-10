@@ -32,6 +32,9 @@ public class DateTime extends DateTimeUtility{
             case "today yyyy-MM-dd":
                 return getCurrentDateTime("yyyy-MM-dd");
 
+            case "today dd/MM/yyyy HH:mm":
+                return getCurrentDateTime("dd/MM/yyyy HH:mm");
+
             case "today d":
                 return getCurrentDateTime("d");
 
