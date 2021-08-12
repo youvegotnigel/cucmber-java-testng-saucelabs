@@ -128,9 +128,29 @@ public class DateTimeUtility {
      *
      * @return current year
      */
-    public static int getCurrentYear() {
+    public static String getCurrentYear() {
         Calendar now = Calendar.getInstance();
-        return now.get(1);
+        return String.valueOf(now.get(1));
+    }
+
+    /**
+     * Get previous year
+     *
+     * @return previous year
+     */
+    public static String getPreviousYear(int noOfYears) {
+        Calendar now = Calendar.getInstance();
+        return String.valueOf(now.get(1) - noOfYears);
+    }
+
+    /**
+     * Get future year
+     *
+     * @return future year
+     */
+    public static String getFutureYear(int noOfYears) {
+        Calendar now = Calendar.getInstance();
+        return String.valueOf(now.get(1) + noOfYears);
     }
 
     /**
