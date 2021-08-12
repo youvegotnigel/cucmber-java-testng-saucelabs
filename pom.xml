@@ -17,6 +17,8 @@
         <testng.version>7.3.0</testng.version>
         <cucumber.version>6.9.1</cucumber.version>
         <cucumber.report.version>5.5.2</cucumber.report.version>
+        <allure.version>2.13.3</allure.version>
+        <aspectj.version>1.9.6</aspectj.version>
         <log4j.version>2.13.3</log4j.version>
         <apache.poi.version>4.1.2</apache.poi.version>
         <ooxml.schemas.version>1.4</ooxml.schemas.version>
@@ -92,6 +94,13 @@
             <artifactId>ooxml-schemas</artifactId>
             <version>${ooxml.schemas.version}</version>
         </dependency>
+
+<!--    allure report   -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber4-jvm</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -109,7 +118,18 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        -Dcucumber.options="--plugin io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"
+                    </argLine>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>net.masterthought</groupId>

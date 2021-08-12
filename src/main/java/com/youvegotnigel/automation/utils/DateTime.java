@@ -11,6 +11,15 @@ public class DateTime extends DateTimeUtility{
     public static String formatIfDateTime(String text) {
 
         switch (text) {
+            case "year":
+                return getCurrentYear();
+
+            case "last year":
+                return getPreviousYear(1);
+
+            case "next year":
+                return getFutureYear(1);
+
             case "today":
                 return getCurrentDateTime("dd-MMM-yyyy");
 
@@ -22,6 +31,9 @@ public class DateTime extends DateTimeUtility{
 
             case "today yyyy-MM-dd":
                 return getCurrentDateTime("yyyy-MM-dd");
+
+            case "today dd/MM/yyyy HH:mm":
+                return getCurrentDateTime("dd/MM/yyyy HH:mm");
 
             case "today d":
                 return getCurrentDateTime("d");
