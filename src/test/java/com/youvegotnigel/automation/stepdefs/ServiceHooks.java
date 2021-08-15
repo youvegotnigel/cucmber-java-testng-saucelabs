@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
@@ -18,11 +17,10 @@ import org.openqa.selenium.logging.LogType;
 public class ServiceHooks {
 
     TestBase testBase;
-    private DevTools devTools;
     public static final Logger log = LogManager.getLogger(ServiceHooks.class.getName());
 
     @Before
-    public void initializeTest() throws Exception{
+    public void initializeTest(){
         testBase = new TestBase();
         testBase.openBrowser();
         testBase.maximizeWindow();
@@ -72,13 +70,13 @@ public class ServiceHooks {
         }
 
         LogEntries logEntries = testBase.eventFiringWebDriver.manage().logs().get(LogType.BROWSER);
+        log.debug("\n*****************CONSOLE LOGS START*****************\n");
         for (LogEntry entry : logEntries) {
             //System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
-            log.debug("\n*****************CONSOLE LOGS START*****************\n");
             log.debug(entry.getMessage());
-            log.debug("\n******************CONSOLE LOGS END******************\n");
             scenario.attach(entry.getMessage(), "text/plain","CONSOLE LOGS");
         }
+        log.debug("\n******************CONSOLE LOGS END******************\n");
     }
 
 //    @BeforeStep
