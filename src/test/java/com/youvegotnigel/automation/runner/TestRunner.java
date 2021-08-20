@@ -1,7 +1,7 @@
 package com.youvegotnigel.automation.runner;
 
-import com.youvegotnigel.automation.base.TestBase;
 import com.youvegotnigel.automation.utils.ReportHelper;
+import gherkin.events.PickleEvent;
 import io.cucumber.testng.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,39 +21,36 @@ import org.testng.annotations.Test;
                 "json:target/cucumber-reports/CucumberTestReport.json"
         })
 public class TestRunner{
-    TestBase testBase;
 
     private TestNGCucumberRunner testNGCucumberRunner;
     public static final Logger log = LogManager.getLogger(TestRunner.class.getName());
 
     @BeforeClass(alwaysRun = true)
-    public void setUpClass() throws Exception {
+    public void setUpClass(){
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
-    public void runScenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
+    public void runScenario(PickleEventWrapper pickleEventWrapper, CucumberFeatureWrapper cucumberFeatureWrapper) throws Throwable {
         // the 'featureWrapper' parameter solely exists to display the feature
         // file in a test report
-        testNGCucumberRunner.runScenario(pickleWrapper.getPickle());
+        testNGCucumberRunner.runScenario(pickleEventWrapper.getPickleEvent());
     }
 
     @DataProvider
     public Object[][] scenarios() {
-        return testNGCucumberRunner.provideScenarios();
+        //return testNGCucumberRunner.provideScenarios();
+        return testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
     }
-
 
     @AfterClass(alwaysRun = true)
     public void tearDownClass() {
-
-        testNGCucumberRunner.finish();
+        this.testNGCucumberRunner.finish();
         try {
             ReportHelper.generateCucumberReport();
-        }catch (Exception e){
+        } catch (Exception e) {
             log.warn("No feature files found");
             log.error(e.getMessage());
         }
     }
-
 }

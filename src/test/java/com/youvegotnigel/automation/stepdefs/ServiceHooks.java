@@ -1,10 +1,10 @@
 package com.youvegotnigel.automation.stepdefs;
 
 import com.youvegotnigel.automation.base.TestBase;
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
+import cucumber.api.java.AfterStep;
+import cucumber.api.java.Before;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -39,7 +39,7 @@ public class ServiceHooks {
         try {
             TakesScreenshot screenshot = (TakesScreenshot) testBase.driver;
             byte[] data = screenshot.getScreenshotAs(OutputType.BYTES);
-            scenario.attach(data, "image/png", "Attachment");
+            scenario.embed(data, "image/png", "Attachment");
             //log.debug("Screenshot taken");
         }catch (WebDriverException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class ServiceHooks {
         for (LogEntry entry : logEntries) {
             //System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
             log.debug(entry.getMessage());
-            scenario.attach(entry.getMessage(), "text/plain","CONSOLE LOGS");
+            scenario.write(entry.getMessage());
         }
         log.debug("\n******************CONSOLE LOGS END******************\n");
     }

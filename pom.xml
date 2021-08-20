@@ -15,7 +15,7 @@
         <selenium.version>4.0.0-beta-3</selenium.version>
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
         <testng.version>7.3.0</testng.version>
-        <cucumber.version>6.9.1</cucumber.version>
+        <cucumber.version>4.8.1</cucumber.version>
         <cucumber.report.version>5.5.2</cucumber.report.version>
         <allure.version>2.13.3</allure.version>
         <aspectj.version>1.9.6</aspectj.version>
