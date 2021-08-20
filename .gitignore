@@ -47,3 +47,7 @@ test-output/
 testdata/
 reports/
 screenshots/
+
+#Allure Results
+allure-results/
+allure-report/
