@@ -16,7 +16,7 @@
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
         <testng.version>7.3.0</testng.version>
         <cucumber.version>4.8.1</cucumber.version>
-        <cucumber.report.version>4.8.0</cucumber.report.version>
+        <cucumber.report.version>5.5.2</cucumber.report.version>
         <allure.version>2.13.3</allure.version>
         <aspectj.version>1.9.6</aspectj.version>
         <log4j.version>2.13.3</log4j.version>
