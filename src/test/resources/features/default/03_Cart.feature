@@ -1,4 +1,4 @@
-@regression
+@regression1
 Feature: Add to Cart Functionality
 
   Background: User navigates to Application URL
