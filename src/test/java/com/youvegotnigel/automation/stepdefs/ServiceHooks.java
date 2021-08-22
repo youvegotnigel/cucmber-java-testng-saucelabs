@@ -1,10 +1,12 @@
 package com.youvegotnigel.automation.stepdefs;
 
 import com.youvegotnigel.automation.base.TestBase;
+
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.qameta.allure.Attachment;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -14,9 +16,11 @@ import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 
+import static org.openqa.selenium.OutputType.BYTES;
+
 public class ServiceHooks {
 
-    TestBase testBase;
+    private static TestBase testBase;
     public static final Logger log = LogManager.getLogger(ServiceHooks.class.getName());
 
     @Before
@@ -41,6 +45,7 @@ public class ServiceHooks {
             byte[] data = screenshot.getScreenshotAs(OutputType.BYTES);
             scenario.attach(data, "image/png", "Attachment");
             //log.debug("Screenshot taken");
+            takeScreenshotToAttachOnAllureReport();
         }catch (WebDriverException e) {
             e.printStackTrace();
             log.error(e.getMessage());
@@ -79,19 +84,8 @@ public class ServiceHooks {
         log.debug("\n******************CONSOLE LOGS END******************\n");
     }
 
-//    @BeforeStep
-//    public void beforeStep() {
-//        //System.out.println("  @BeforeStep");
-//    }
-//
-//    @AfterStep
-//    public void afterStep() {
-//        System.out.println("  @AfterStep");
-//        try {
-//            log.debug("*********  2  **************");
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+    @Attachment(value = "Failed test screenshot", type = "image/png")
+    public static byte[] takeScreenshotToAttachOnAllureReport() {
+        return ((TakesScreenshot) testBase.eventFiringWebDriver).getScreenshotAs(BYTES);
+    }
 }
