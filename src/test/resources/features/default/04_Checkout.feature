@@ -1,4 +1,4 @@
-@regression1
+@regression
 Feature: Checkout Functionality
 
   Background: User navigates to Application URL

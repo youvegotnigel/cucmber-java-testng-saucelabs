@@ -1,4 +1,4 @@
-@regression1
+@regression
 Feature: Products Functionality
 
   Background: User navigates to Application URL
