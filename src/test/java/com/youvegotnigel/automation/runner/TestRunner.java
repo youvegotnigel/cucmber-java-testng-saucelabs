@@ -1,7 +1,7 @@
 package com.youvegotnigel.automation.runner;
 
+import com.youvegotnigel.automation.base.TestBase;
 import com.youvegotnigel.automation.utils.ReportHelper;
-import gherkin.events.PickleEvent;
 import io.cucumber.testng.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,38 +17,44 @@ import org.testng.annotations.Test;
         dryRun = false,
         plugin = {
                 "pretty",
+                "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json"
         })
-public class TestRunner{
+public class TestRunner extends AbstractTestNGCucumberTests{
+    TestBase testBase;
 
     private TestNGCucumberRunner testNGCucumberRunner;
     public static final Logger log = LogManager.getLogger(TestRunner.class.getName());
 
     @BeforeClass(alwaysRun = true)
+    @Override
     public void setUpClass(){
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
-    public void runScenario(PickleEventWrapper pickleEventWrapper, CucumberFeatureWrapper cucumberFeatureWrapper) throws Throwable {
+    @Override
+    public void runScenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
         // the 'featureWrapper' parameter solely exists to display the feature
         // file in a test report
-        testNGCucumberRunner.runScenario(pickleEventWrapper.getPickleEvent());
+        testNGCucumberRunner.runScenario(pickleWrapper.getPickle());
     }
 
     @DataProvider
+    @Override
     public Object[][] scenarios() {
-        //return testNGCucumberRunner.provideScenarios();
-        return testNGCucumberRunner == null ? new Object[0][0] : this.testNGCucumberRunner.provideScenarios();
+        return testNGCucumberRunner.provideScenarios();
     }
 
     @AfterClass(alwaysRun = true)
+    @Override
     public void tearDownClass() {
-        this.testNGCucumberRunner.finish();
+
+        testNGCucumberRunner.finish();
         try {
             ReportHelper.generateCucumberReport();
-        } catch (Exception e) {
+        }catch (Exception e){
             log.warn("No feature files found");
             log.error(e.getMessage());
         }
