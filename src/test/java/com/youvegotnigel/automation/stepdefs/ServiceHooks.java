@@ -1,7 +1,7 @@
 package com.youvegotnigel.automation.stepdefs;
 
 import com.youvegotnigel.automation.base.TestBase;
-
+import com.youvegotnigel.automation.utils.CreateEnvFile;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
@@ -63,6 +63,8 @@ public class ServiceHooks {
             analyzeLog(scenario);
 
         }
+        CreateEnvFile createEnvFile = new CreateEnvFile();
+        createEnvFile.createFile();
         testBase.tearDown();
     }
 
