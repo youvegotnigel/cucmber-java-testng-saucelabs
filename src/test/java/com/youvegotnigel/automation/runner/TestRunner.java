@@ -1,6 +1,5 @@
 package com.youvegotnigel.automation.runner;
 
-import com.youvegotnigel.automation.base.TestBase;
 import com.youvegotnigel.automation.utils.ReportHelper;
 import io.cucumber.testng.*;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +21,6 @@ import org.testng.annotations.Test;
                 "json:target/cucumber-reports/CucumberTestReport.json"
         })
 public class TestRunner extends AbstractTestNGCucumberTests{
-    TestBase testBase;
 
     private TestNGCucumberRunner testNGCucumberRunner;
     public static final Logger log = LogManager.getLogger(TestRunner.class.getName());
