@@ -86,7 +86,7 @@ public class ServiceHooks {
         log.debug("\n******************CONSOLE LOGS END******************\n");
     }
 
-    @Attachment(value = "Failed test screenshot", type = "image/png")
+    @Attachment(value = "Screenshot", type = "image/png")
     public static byte[] takeScreenshotToAttachOnAllureReport() {
         return ((TakesScreenshot) testBase.eventFiringWebDriver).getScreenshotAs(BYTES);
     }
