@@ -64,7 +64,7 @@ public class TestBase {
                 FirefoxBinary firefoxBinary = new FirefoxBinary();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setBinary(firefoxBinary);
-                firefoxOptions.setHeadless(true);  //set headless mode true or false
+                firefoxOptions.setHeadless(Boolean.parseBoolean(config.getProperty("SET_HEADLESS")));  //set headless mode true or false
 
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver(firefoxOptions);
@@ -87,7 +87,7 @@ public class TestBase {
                 logPrefs.enable(LogType.BROWSER, Level.ALL);
 
                 options.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
-                options.setHeadless(true); //set headless mode true or false
+                options.setHeadless(Boolean.parseBoolean(config.getProperty("SET_HEADLESS")));
 
                 driver = new ChromeDriver(options);
                 log.debug("Initialize chrome driver");
