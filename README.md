@@ -17,6 +17,7 @@ in terminal
 * Capture Screenshots
 * Cucumber BDD Framework
 * Cucumber HTML Report
+* [Allure Report](https://docs.qameta.io/allure/)
 
 
 ## Report Highlights
