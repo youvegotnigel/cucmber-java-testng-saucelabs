@@ -24,7 +24,7 @@
         <apache.poi.version>4.1.2</apache.poi.version>
         <ooxml.schemas.version>1.4</ooxml.schemas.version>
         <maven.resources.plugin.version>2.4</maven.resources.plugin.version>
-        <maven.surefire.plugin.version>2.14.1</maven.surefire.plugin.version>
+        <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
         <maven.cucumber.reporting.plugin.version>3.8.0</maven.cucumber.reporting.plugin.version>
     </properties>
 
