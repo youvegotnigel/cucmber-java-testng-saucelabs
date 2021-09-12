@@ -1,6 +1,19 @@
 package com.youvegotnigel.automation.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.FileInputStream;
+import java.util.Arrays;
+import java.util.Properties;
+import java.util.TimeZone;
+
 public class DateTime extends DateTimeUtility{
+
+    public static Properties config;
+    private static String timeZone;
+    public static final Logger log = LogManager.getLogger(DateTime.class.getName());
+
 
     /**
      * Get date time formatted value
@@ -9,6 +22,11 @@ public class DateTime extends DateTimeUtility{
      * @return the Date/Time value
      */
     public static String formatIfDateTime(String text) {
+
+        LoadConfigProperty();
+        timeZone = config.getProperty("TIME_ZONE");
+        log.info("The current TimeZone ID is: " + TimeZone.getTimeZone(timeZone).getID());
+        log.debug("Setting datetime for " + text);
 
         switch (text) {
             case "year":
@@ -21,49 +39,49 @@ public class DateTime extends DateTimeUtility{
                 return getFutureYear(1);
 
             case "today":
-                return getCurrentDateTime("dd-MMM-yyyy");
+                return getCurrentDateTime(timeZone,"dd-MMM-yyyy");
 
             case "previous":
-                return getPreviousDateTime(1,  "dd-MMM-yyyy");
+                return getPreviousDateTime(1,"dd-MMM-yyyy");
 
             case "future":
-                return getFutureDateTime(1,  "dd-MMM-yyyy");
+                return getFutureDateTime(1,"dd-MMM-yyyy");
 
             case "today yyyy-MM-dd":
-                return getCurrentDateTime("yyyy-MM-dd");
+                return getCurrentDateTime(timeZone,"yyyy-MM-dd");
 
             case "today dd/MM/yyyy HH:mm":
-                return getCurrentDateTime("dd/MM/yyyy HH:mm");
+                return getCurrentDateTime(timeZone,"dd/MM/yyyy HH:mm");
 
             case "today d":
-                return getCurrentDateTime("d");
+                return getCurrentDateTime(timeZone, "d");
 
             case "now HH:mm:ss":
-                return getCurrentDateTime("HH:mm:ss");
+                return getCurrentDateTime(timeZone, "HH:mm:ss");
 
             case "now":
-                return getCurrentDateTime("hh:mm aa");
+                return getCurrentDateTime(timeZone,"hh:mm a");
 
             case "now h:mm":
-                return getCurrentDateTime("h:mm");
+                return getCurrentDateTime(timeZone,"h:mm");
 
             case "today+now":
-                return getCurrentDateTime("dd-MMM-yyyy HH:mm");
+                return getCurrentDateTime(timeZone,"dd-MMM-yyyy HH:mm");
 
             case "today+now+time":
-                return getCurrentDateTime("dd-MMM-yyyy hh:mm:ss aa");
+                return getCurrentDateTime(timeZone,"dd-MMM-yyyy hh:mm:ss aa");
 
             case "now HH":
-                return getCurrentDateTime("HH");
+                return getCurrentDateTime(timeZone,"HH");
 
             case "now hh":
-                return getCurrentDateTime("hh");
+                return getCurrentDateTime(timeZone,"hh");
 
             case "now mm":
-                return getCurrentDateTime("mm");
+                return getCurrentDateTime(timeZone,"mm");
 
             case "now m0":
-                return getCurrentDateTime("m0");
+                return getCurrentDateTime(timeZone,"m0");
 
             default:
 
@@ -79,25 +97,37 @@ public class DateTime extends DateTimeUtility{
 
                 else if(text.matches("^now HH\\+\\d$")){
                     String[] change = text.split("now HH+");
-                    return getFutureTime(Integer.parseInt(change[1]),0,"HH");
+                    return getFutureTime(Integer.parseInt(change[1]),0, timeZone,"HH");
                 }
 
                 else if(text.matches("^now HH\\-\\d$")){
                     String[] change = text.split("now HH-");
-                    return getPastTime(Integer.parseInt(change[1]),0,"HH");
+                    return getPastTime(Integer.parseInt(change[1]),0, timeZone,"HH");
                 }
 
                 else if(text.matches("^now mm\\+\\d$")){
                     String[] change = text.split("now mm+");
-                    return getFutureTime(0, Integer.parseInt(change[1]),"mm");
+                    return getFutureTime(0, Integer.parseInt(change[1]), timeZone,"mm");
                 }
 
                 else if(text.matches("^now mm\\-\\d$")){
                     String[] change = text.split("now mm-");
-                    return getPastTime(0, Integer.parseInt(change[1]),"mm");
+                    return getPastTime(0, Integer.parseInt(change[1]), timeZone,"mm");
                 }
 
                 return text;
+        }
+    }
+
+    public static void LoadConfigProperty(){
+        try {
+            config = new Properties();
+            FileInputStream ip = new FileInputStream(
+                    System.getProperty("user.dir") + "//src//test//resources//config//config.properties");
+            config.load(ip);
+            log.debug("Properties file loaded successfully");
+        }catch (Exception e){
+            log.error("Configuration Properties file not found." + Arrays.toString(e.getStackTrace()));
         }
     }
 }
