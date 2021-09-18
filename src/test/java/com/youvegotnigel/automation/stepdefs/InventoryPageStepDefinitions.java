@@ -1,12 +1,12 @@
 package com.youvegotnigel.automation.stepdefs;
 
 import com.youvegotnigel.automation.base.TestBase;
+import com.youvegotnigel.automation.pageobjects.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import com.youvegotnigel.automation.pageobjects.LoginPage;
 
 import java.util.ArrayList;
 import java.util.Collections;

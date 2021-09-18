@@ -12,18 +12,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+<!--        <selenium.version>4.0.0-beta-3</selenium.version>-->
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
         <testng.version>7.3.0</testng.version>
         <cucumber.version>6.9.1</cucumber.version>
         <cucumber.report.version>5.5.2</cucumber.report.version>
-        <allure.version>2.13.3</allure.version>
+        <allure.version>2.13.8</allure.version>
         <aspectj.version>1.9.6</aspectj.version>
         <log4j.version>2.13.3</log4j.version>
         <apache.poi.version>4.1.2</apache.poi.version>
         <ooxml.schemas.version>1.4</ooxml.schemas.version>
         <maven.resources.plugin.version>2.4</maven.resources.plugin.version>
-        <maven.surefire.plugin.version>2.14.1</maven.surefire.plugin.version>
+        <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
         <maven.cucumber.reporting.plugin.version>3.8.0</maven.cucumber.reporting.plugin.version>
     </properties>
 
@@ -98,7 +99,7 @@
 <!--    allure report   -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber4-jvm</artifactId>
+            <artifactId>allure-cucumber6-jvm</artifactId>
             <version>${allure.version}</version>
         </dependency>
     </dependencies>
