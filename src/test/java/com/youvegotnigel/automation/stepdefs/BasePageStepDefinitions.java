@@ -81,9 +81,9 @@ public class BasePageStepDefinitions extends TestBase{
 
         if(question.matches(".*\\[[\\d.]]")){
             var valueAndIndex = getValueAndIndex(question);
-            setTextInputForLabel(valueAndIndex[0], valueAndIndex[1], answer);
+            pageBase.setTextInputForLabel(valueAndIndex[0], valueAndIndex[1], answer);
         }else {
-            setTextInputForLabel(question, answer);
+            pageBase.setTextInputForLabel(question, answer);
         }
     }
 
