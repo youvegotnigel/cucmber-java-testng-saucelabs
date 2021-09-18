@@ -58,12 +58,14 @@ public class PageBase {
     public void clearText(By by) {
         var element = driver.findElement(by);
         waitForVisibility(element);
+        highLightElement(element);
         element.clear();
     }
 
     public void click(By by) {
         var element = driver.findElement(by);
         waitForVisibility(element);
+        highLightElement(element);
         element.click();
     }
 
@@ -77,18 +79,21 @@ public class PageBase {
     public String getText(By by) {
         var element = driver.findElement(by);
         waitForVisibility(element);
+        highLightElement(element);
         return element.getText();
     }
 
     public boolean isDisplayed(By by) {
         var element = driver.findElement(by);
         waitForVisibility(element);
+        highLightElement(element);
         return element.isDisplayed();
     }
 
     public String getAttribute(By by, String attribute) {
         var element = driver.findElement(by);
         waitForVisibility(element);
+        highLightElement(element);
         return element.getAttribute(attribute);
     }
 
@@ -98,6 +103,7 @@ public class PageBase {
         String xpath = "//button[contains(normalize-space(),'" + text + "')]";
         WebElement element = driver.findElement(By.xpath(xpath));
         try {
+            highLightElement(element);
             element.click();
         } catch (Exception e) {
             log.debug("Could not click on web element");
@@ -110,6 +116,7 @@ public class PageBase {
         String xpath = "(//button[contains(normalize-space(),'" + text + "')])["+ index +"]" ;
         WebElement element = driver.findElement(By.xpath(xpath));
         try {
+            highLightElement(element);
             element.click();
         } catch (Exception e) {
             log.debug("Could not click on web element");
@@ -122,6 +129,7 @@ public class PageBase {
         String xpath = "//a[contains(normalize-space(),'" + text + "')]";
         WebElement element = driver.findElement(By.xpath(xpath));
         try {
+            highLightElement(element);
             element.click();
         } catch (Exception e) {
             log.debug("Could not click on web element");
@@ -134,6 +142,7 @@ public class PageBase {
         String xpath = "(//a[contains(normalize-space(),'" + text + "')])["+ index +"]" ;
         WebElement element = driver.findElement(By.xpath(xpath));
         try {
+            highLightElement(element);
             element.click();
         } catch (Exception e) {
             log.debug("Could not click on web element");
@@ -152,6 +161,7 @@ public class PageBase {
     public boolean isDisplayedInNormalizeSpace(String text, String index) {
         String xpath = "(//*[normalize-space()='" + text + "'])["+ index +"]" ;
         WebElement element = driver.findElement(By.xpath(xpath));
+        highLightElement(element);
         return element.isDisplayed();
     }
 
@@ -159,6 +169,7 @@ public class PageBase {
         String xpath = "//*[normalize-space()='" + text + "']";
         WebElement element = driver.findElement(By.xpath(xpath));
         try {
+            highLightElement(element);
             element.click();
         } catch (Exception e) {
             log.debug("Could not click on web element");
@@ -171,6 +182,7 @@ public class PageBase {
         String xpath = "(//*[normalize-space()='" + text + "'])["+ index +"]" ;
         WebElement element = driver.findElement(By.xpath(xpath));
         try {
+            highLightElement(element);
             element.click();
         } catch (Exception e) {
             log.debug("Could not click on web element");
@@ -183,6 +195,7 @@ public class PageBase {
 
         String xpath = "//label[contains(text(),'"+ label_name +"')]/following::input[1]";
         WebElement element = driver.findElement(By.xpath(xpath));
+        highLightElement(element);
         element.sendKeys(getGlobalVariable(value));
     }
 
@@ -190,6 +203,7 @@ public class PageBase {
 
         String xpath = "(//label[contains(text(),'"+ label_name +"')])["+ index +"]/following::input[1]";
         WebElement element = driver.findElement(By.xpath(xpath));
+        highLightElement(element);
         element.sendKeys(getGlobalVariable(value));
     }
 
@@ -203,6 +217,7 @@ public class PageBase {
 
             System.out.println(e.getMessage());
         }
+        //un-highlight text
         //js.executeScript("arguments[0].setAttribute('style','border: solid 2px white');", element);
     }
 }
