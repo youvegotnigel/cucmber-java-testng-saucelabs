@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -20,10 +21,11 @@ public class DateTimeUtility {
      * @param dateTimeFormat the date time format. If the dateTimeFormat is null, the default format set to "dd-MM-yyyy hh:mm:ss a"
      * @return the current date
      */
-    public static String getCurrentDateTime(String dateTimeFormat) {
-        DateFormat format = setDateFormat(dateTimeFormat);
-        Date date = new Date();
-        return format.format(date);
+    public static String getCurrentDateTime(String timeZone, String format) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
+        ZoneId zoneId = ZoneId.of(timeZone);
+        LocalDateTime now = LocalDateTime.now(zoneId);
+        return dtf.format(now);
     }
 
     /**
@@ -172,8 +174,12 @@ public class DateTimeUtility {
      * @param format the format of required pattern
      * @return the new time
      */
-    public static String getFutureTime(int hrs, int minute, String format) {
-        return LocalTime.now(ZoneId.systemDefault()).plusHours(hrs).plusMinutes(minute).format(DateTimeFormatter.ofPattern(format));
+    public static String getFutureTime(int hrs, int minute, String timeZone, String format) {
+        //return LocalTime.now(ZoneId.systemDefault()).plusHours(hrs).plusMinutes(minute).format(DateTimeFormatter.ofPattern(format));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
+        ZoneId zoneId = ZoneId.of(timeZone);
+        var time = LocalDateTime.now(zoneId).plusHours(hrs).plusMinutes(minute);
+        return dtf.format(time);
     }
 
     /**
@@ -195,8 +201,12 @@ public class DateTimeUtility {
      * @param format the format of required pattern
      * @return the new time
      */
-    public static String getPastTime(int hrs, int minute, String format) {
-        return LocalTime.now(ZoneId.systemDefault()).minusHours(hrs).minusMinutes(minute).format(DateTimeFormatter.ofPattern(format));
+    public static String getPastTime(int hrs, int minute, String timeZone, String format) {
+        //return LocalTime.now(ZoneId.systemDefault()).minusHours(hrs).minusMinutes(minute).format(DateTimeFormatter.ofPattern(format));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
+        ZoneId zoneId = ZoneId.of(timeZone);
+        var time = LocalDateTime.now(zoneId).minusHours(hrs).minusMinutes(minute);
+        return dtf.format(time);
     }
 
     /**

@@ -1,6 +1,5 @@
 package com.youvegotnigel.automation.runner;
 
-import com.youvegotnigel.automation.base.TestBase;
 import com.youvegotnigel.automation.utils.ReportHelper;
 import io.cucumber.testng.*;
 import org.apache.logging.log4j.LogManager;
@@ -17,21 +16,23 @@ import org.testng.annotations.Test;
         dryRun = false,
         plugin = {
                 "pretty",
+                "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
                 "html:target/cucumber-reports/cucumber-pretty",
                 "json:target/cucumber-reports/CucumberTestReport.json"
         })
-public class TestRunner{
-    TestBase testBase;
+public class TestRunner extends AbstractTestNGCucumberTests{
 
     private TestNGCucumberRunner testNGCucumberRunner;
     public static final Logger log = LogManager.getLogger(TestRunner.class.getName());
 
     @BeforeClass(alwaysRun = true)
-    public void setUpClass() throws Exception {
+    @Override
+    public void setUpClass(){
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
     @Test(groups = "cucumber", description = "Runs Cucumber Scenarios", dataProvider = "scenarios")
+    @Override
     public void runScenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) {
         // the 'featureWrapper' parameter solely exists to display the feature
         // file in a test report
@@ -39,12 +40,13 @@ public class TestRunner{
     }
 
     @DataProvider
+    @Override
     public Object[][] scenarios() {
         return testNGCucumberRunner.provideScenarios();
     }
 
-
     @AfterClass(alwaysRun = true)
+    @Override
     public void tearDownClass() {
 
         testNGCucumberRunner.finish();
@@ -55,5 +57,4 @@ public class TestRunner{
             log.error(e.getMessage());
         }
     }
-
 }

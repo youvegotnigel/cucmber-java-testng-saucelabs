@@ -1,6 +1,7 @@
 package com.youvegotnigel.automation.base;
 
 import com.google.common.io.Files;
+import com.youvegotnigel.automation.pageobjects.LoginPage;
 import com.youvegotnigel.automation.utils.ListenerClass;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -13,11 +14,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import com.youvegotnigel.automation.pageobjects.LoginPage;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +28,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import java.util.regex.Pattern;
 
 
@@ -60,7 +64,7 @@ public class TestBase {
                 FirefoxBinary firefoxBinary = new FirefoxBinary();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.setBinary(firefoxBinary);
-                firefoxOptions.setHeadless(true);  //set headless mode true or false
+                firefoxOptions.setHeadless(Boolean.parseBoolean(config.getProperty("SET_HEADLESS")));  //set headless mode true or false
 
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver(firefoxOptions);
@@ -78,7 +82,12 @@ public class TestBase {
 
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
-                options.setHeadless(true); //set headless mode true or false
+
+                LoggingPreferences logPrefs = new LoggingPreferences();
+                logPrefs.enable(LogType.BROWSER, Level.ALL);
+
+                options.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+                options.setHeadless(Boolean.parseBoolean(config.getProperty("SET_HEADLESS")));
 
                 driver = new ChromeDriver(options);
                 log.debug("Initialize chrome driver");
@@ -154,13 +163,51 @@ public class TestBase {
 
     }
 
+    //Add console logs
+//    public void getConsoleLogs(Scenario scenario){
+//
+//        devTools = ((ChromeDriver)this.eventFiringWebDriver).getDevTools();
+//        devTools.createSession();
+//
+//        // Send A Command To Enable The Logs
+//        devTools.send(Log.enable());
+//        // Add A Listener For The Logs
+//        devTools.addListener(Log.entryAdded(), logEntry -> {
+//            scenario.attach("----------CONSOLE LOGS START------------","text/plain","Console Logs");
+//            //System.out.println("source = " + logEntry.getSource());
+//            scenario.attach("SOURCE    ::: " + logEntry.getSource(),"text/plain","Console Logs");
+//            scenario.attach("LEVEL     ::: " + logEntry.getLevel(),"text/plain","Console Logs");
+//            scenario.attach("TEXT      ::: " + logEntry.getText(),"text/plain","Console Logs");
+//            scenario.attach("TIMESTAMP ::: " + logEntry.getTimestamp(),"text/plain","Console Logs");
+//            log.debug("SOURCE    ::: " + logEntry.getSource());
+//            log.debug("LEVEL     ::: " + logEntry.getLevel());
+//            log.debug("TEXT      ::: " + logEntry.getText());
+//            log.debug("TIMESTAMP ::: " + logEntry.getTimestamp());
+//            System.out.println("SOURCE    ::: " + logEntry.getSource());
+//            System.out.println("LEVEL     ::: " + logEntry.getLevel());
+//            System.out.println("TEXT      ::: " + logEntry.getText());
+//            System.out.println("TIMESTAMP ::: " + logEntry.getTimestamp());
+//            scenario.attach("------------CONSOLE LOGS END------------","text/plain","Console Logs");
+//        });
+//
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     public void tearDown(){
         eventFiringWebDriver.quit();
         log.debug("Browser is closed");
     }
 
-    public WebDriver getDriver(){
+    public EventFiringWebDriver getEventFiringWebDriverDriver(){
         return eventFiringWebDriver;
+    }
+
+    public WebDriver getWebDriver(){
+        return driver;
     }
 
     public String decodeText(String text){
@@ -192,20 +239,6 @@ public class TestBase {
         for(String a : list){
             System.out.println("list : " + a);
         }
-    }
-
-    public void setTextInputForLabel(String label_name, String value){
-
-        String xpath = "//label[contains(text(),'"+ label_name +"')]/following::input[1]";
-        WebElement element = driver.findElement(By.xpath(xpath));
-        element.sendKeys(getGlobalVariable(value));
-    }
-
-    public void setTextInputForLabel(String label_name, String index, String value){
-
-        String xpath = "(//label[contains(text(),'"+ label_name +"')])["+ index +"]/following::input[1]";
-        WebElement element = driver.findElement(By.xpath(xpath));
-        element.sendKeys(getGlobalVariable(value));
     }
 
 
