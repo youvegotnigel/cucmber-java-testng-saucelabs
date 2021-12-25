@@ -19,7 +19,7 @@
         <cucumber.report.version>5.6.1</cucumber.report.version>
         <allure.version>2.13.8</allure.version>
         <aspectj.version>1.9.6</aspectj.version>
-        <log4j.version>2.16.0</log4j.version>
+        <log4j.version>2.17.0</log4j.version>
         <apache.poi.version>4.1.2</apache.poi.version>
         <ooxml.schemas.version>1.4</ooxml.schemas.version>
         <maven.resources.plugin.version>2.4</maven.resources.plugin.version>
