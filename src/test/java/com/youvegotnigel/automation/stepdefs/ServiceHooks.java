@@ -23,7 +23,7 @@ public class ServiceHooks {
     private static TestBase testBase;
     public static final Logger log = LogManager.getLogger(ServiceHooks.class.getName());
 
-    @Before
+    @Before("not @SkipBefore")
     public void initializeTest(){
         testBase = new TestBase();
         testBase.openBrowser();

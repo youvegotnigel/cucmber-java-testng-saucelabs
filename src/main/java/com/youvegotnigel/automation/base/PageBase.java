@@ -1,5 +1,6 @@
 package com.youvegotnigel.automation.base;
 
+import com.youvegotnigel.automation.utils.GlobalVariable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -50,8 +51,7 @@ public class PageBase {
     }
 
     public void waitForVisibility(WebElement by) {
-        LoadConfigProperty();
-        WebDriverWait wait = new WebDriverWait(driver, Integer.valueOf(config.getProperty("WAIT_TIME")));
+        WebDriverWait wait = new WebDriverWait(driver, GlobalVariable.WAIT_TIME);
         wait.until(ExpectedConditions.visibilityOf(by));
     }
 

@@ -18,7 +18,8 @@ public class DateTimeUtility {
     /**
      * Get current date time
      *
-     * @param dateTimeFormat the date time format. If the dateTimeFormat is null, the default format set to "dd-MM-yyyy hh:mm:ss a"
+     * @param timeZone timezone used in the application
+     * @param format the date time format. If the dateTimeFormat is null, the default format set to "dd-MM-yyyy hh:mm:ss a"
      * @return the current date
      */
     public static String getCurrentDateTime(String timeZone, String format) {
