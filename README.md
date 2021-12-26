@@ -4,7 +4,7 @@
 
 type
 ```bash
-mvn clean verify -Dtestng.dtd.http=true -Dmaven.test.failure.ignore=true
+mvn clean verify -Dtestng.dtd.http=true -Dmaven.test.failure.ignore=true -Dlog4j.configurationFile=src/test/resources/log4j2.xml
 ```
 in terminal
 
