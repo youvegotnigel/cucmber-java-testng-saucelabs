@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
@@ -51,7 +52,7 @@ public class PageBase {
     }
 
     public void waitForVisibility(WebElement by) {
-        WebDriverWait wait = new WebDriverWait(driver, GlobalVariable.WAIT_TIME);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(GlobalVariable.WAIT_TIME));
         wait.until(ExpectedConditions.visibilityOf(by));
     }
 

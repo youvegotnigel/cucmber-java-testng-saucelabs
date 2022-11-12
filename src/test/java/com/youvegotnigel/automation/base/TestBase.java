@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -111,7 +112,7 @@ public class TestBase {
     }
 
     public void explicitWait(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(eventFiringWebDriver, 3000);
+        WebDriverWait wait = new WebDriverWait(eventFiringWebDriver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 

@@ -12,6 +12,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class DropDownBug {
 
     private WebDriver driver;
@@ -48,7 +50,7 @@ public class DropDownBug {
 
     public void explicitWaitMethod(By element) {
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
